@@ -59,5 +59,15 @@ public class ArticleAction extends ActionSupport{
 		this.setArticle(articleService.findArticleByArticleId(articleId));
 		return SUCCESS;
 	}
+	
+	public String deleteArticleByArticleId(){
+		articleService.deleteArticleByArticleId(articleId);
+		return SUCCESS;
+	}
+	
+	public String updateArticle(){
+		articleService.updateArticle(article);
+		return SUCCESS;
+	}
 
 }

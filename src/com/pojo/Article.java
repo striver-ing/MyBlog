@@ -13,6 +13,7 @@ public class Article implements java.io.Serializable {
 	private String title;
 	private String content;
 	private String abstract_;
+	private String imgPath;
 	private String classify;
 	private String date;
 	private Integer readedCount;
@@ -32,12 +33,13 @@ public class Article implements java.io.Serializable {
 
 	/** full constructor */
 	public Article(Integer userId, String title, String content,
-			String abstract_, String classify, String date,
+			String abstract_, String imgPath, String classify, String date,
 			Integer readedCount, Integer commentCount) {
 		this.userId = userId;
 		this.title = title;
 		this.content = content;
 		this.abstract_ = abstract_;
+		this.imgPath = imgPath;
 		this.classify = classify;
 		this.date = date;
 		this.readedCount = readedCount;
@@ -84,6 +86,14 @@ public class Article implements java.io.Serializable {
 
 	public void setAbstract_(String abstract_) {
 		this.abstract_ = abstract_;
+	}
+
+	public String getImgPath() {
+		return this.imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
 
 	public String getClassify() {

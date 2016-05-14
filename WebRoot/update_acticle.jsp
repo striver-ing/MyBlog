@@ -33,19 +33,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	    <form action="addArticle.action" method="post">
+	    <form action="updateArticle.action" method="post">
 			<div class="wrapper">
 				<br />
 				<br />
 			
-				<input type="text" class="form-control" name="article.title" placeholder="这里输入标题..." autofocus>
+				<input type="text" class="form-control" name="article.title" value="${article.title}">
 				<br />
 				
-				<textarea id="editor" name="article.content" placeholder="这里输入内容..."></textarea>
+				<textarea id="editor" name="article.content" autofocus>${article.content}</textarea>
 				<br />
 				
 				<br />
-				<textarea name="article.abstract_" class="form-control" rows=3 placeholder="摘要..."></textarea>
+				<textarea name="article.abstract_" class="form-control" rows=3>${article.abstract_}</textarea>
 				<br />
 				<br />
 				

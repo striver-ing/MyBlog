@@ -25,11 +25,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  	<!-- 循环取博客 -->
     <s:iterator value = "articles" id = "article">
+    <!-- 贴图 -->
+    <img src = <s:property value = "#article.imgPath"/> width = "80px">
+    <!-- 文章标题 -->
     <a href = "findArticleByArticleId.action?articleId=<s:property value = "#article.articleId"/>"><s:property value = "#article.title"/></a>
-    	date:<s:property value = "#article.date"/>
-    	<br>
-    	<br>
+    <br>
+    <!-- 摘要 -->
+    <s:property value = "#article.abstract_"/>
+    <br>
+    <!-- 日期 -->
+    date:<s:property value = "#article.date"/>
+    <!--  操作 -->
+    <a href = "updateArticlePre.action?articleId=<s:property value = "#article.articleId"/>">编辑</a>
+    <a href = "deleteArticleByArticleId?articleId=<s:property value = "#article.articleId"/>">删除</a>
+   	<br>
+   	<br>
     </s:iterator>
   </body>
 </html>

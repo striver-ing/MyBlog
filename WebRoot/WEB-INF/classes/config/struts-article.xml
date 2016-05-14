@@ -21,6 +21,18 @@
 			<result name = "success">article_view.jsp</result>
 		</action>
 		
+		<action name = "deleteArticleByArticleId" class = "articleAction" method = "deleteArticleByArticleId">
+			<result name = "success" type="redirectAction">findAllArticle</result>
+		</action>
+		
+		<action name = "updateArticlePre" class = "articleAction" method = "findArticleByArticleId">
+			<result name = "success">update_acticle.jsp</result>
+		</action>
+		
+		<action name = "updateArticle" class = "articleAction" method = "updateArticle">
+			<result name = "success">/article_view.jsp</result>
+		</action>
+		
 	</package>
 
 

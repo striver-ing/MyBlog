@@ -21,12 +21,15 @@
         </property>
         <property name="abstract_" type="java.lang.String">
             <column name="abstract" length="400">
-                <comment>摘要</comment>
+                <comment>æ'˜è¦�</comment>
             </column>
+        </property>
+        <property name="imgPath" type="java.lang.String">
+            <column name="img_path" length="45" />
         </property>
         <property name="classify" type="java.lang.String">
             <column name="classify" length="45">
-                <comment>分类</comment>
+                <comment>åˆ†ç±»</comment>
             </column>
         </property>
         <property name="date" type="java.lang.String">
