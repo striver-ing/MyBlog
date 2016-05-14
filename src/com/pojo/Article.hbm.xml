@@ -21,12 +21,12 @@
         </property>
         <property name="abstract_" type="java.lang.String">
             <column name="abstract" length="400">
-                <comment>æ'˜è¦�</comment>
+                <comment>摘要</comment>
             </column>
         </property>
         <property name="classify" type="java.lang.String">
             <column name="classify" length="45">
-                <comment>åˆ†ç±»</comment>
+                <comment>分类</comment>
             </column>
         </property>
         <property name="date" type="java.lang.String">

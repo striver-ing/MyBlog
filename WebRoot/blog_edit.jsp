@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    params: null, //键值对,指定文件上传接口的额外参数,上传的时候随文件一起提交
 			    fileKey: 'fileDataFileName', //服务器端获取文件数据的参数名
 			    connectionCount: 3,  //图片同时上传的最大数
-			    leaveConfirm: '正在上传文件' //当在文件上传时离开页面的提示信息
+			    leaveConfirm: '正在上传文件...' //当在文件上传时离开页面的提示信息
 			} 
 		});
   	})
