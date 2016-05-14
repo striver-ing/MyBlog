@@ -19,9 +19,19 @@ public class ArticleServiceImpl extends HibernateDaoSupport implements
 	}
 
 	@Override
-	public List<Article> findAllArticle() {
+	public List<Article> findAllArticle(String condition) {
 		// TODO Auto-generated method stub
-		return null;
+		String hql = "from Article " + condition;
+		List<Article> articles = (List<Article>)this.getHibernateTemplate().find(hql);
+		
+		return articles;
+	}
+	
+	@Override
+	public Article findArticleByArticleId(int articleId) {
+		// TODO Auto-generated method stub
+		Article article = (Article)this.getHibernateTemplate().get(Article.class, articleId);
+		return article;
 	}
 
 }

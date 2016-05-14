@@ -6,8 +6,8 @@
 -->
 <hibernate-mapping>
     <class name="com.pojo.Article" table="Article" catalog="myblog">
-        <id name="id" type="java.lang.Integer">
-            <column name="id" />
+        <id name="articleId" type="java.lang.Integer">
+            <column name="article_id" />
             <generator class="identity" />
         </id>
         <property name="userId" type="java.lang.Integer">

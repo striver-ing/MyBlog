@@ -3,15 +3,13 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
-<%@taglib prefix="s" uri="/struts-tags"%>
-
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'article_list.jsp' starting page</title>
+    <title>My JSP 'artile_view.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,11 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <s:iterator value = "articles" id = "article">
-    <a href = "findArticleByArticleId.action?articleId=<s:property value = "#article.articleId"/>"><s:property value = "#article.title"/></a>
-    	date:<s:property value = "#article.date"/>
-    	<br>
-    	<br>
-    </s:iterator>
+  
+   	<h3>${article.title}</h3>
+   	
+   	${article.content}
   </body>
 </html>

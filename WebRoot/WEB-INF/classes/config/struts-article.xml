@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="struts-article" extends="struts-base">
+		<!-- 图片上传 -->
+		<action name="ImgUpload" class="com.action.ImgUploadAction" method="imgUpload"/>
+		
+		<action name="addArticle" class = "articleAction" method = "addArticle">
+			<result name = "success" type = "redirectAction">findAllArticle</result>
+			<result name = "error">index.jsp</result>
+		</action>
+		
+		<action name = "findAllArticle" class = "articleAction" method = "findAllArticle">
+			<result name = "success">article_list.jsp</result>
+		</action>
+		
+		<action name = "findArticleByArticleId" class = "articleAction" method = "findArticleByArticleId">
+			<result name = "success">article_view.jsp</result>
+		</action>
+		
+	</package>
+
+
+</struts>

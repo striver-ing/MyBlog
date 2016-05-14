@@ -6,6 +6,7 @@ import com.pojo.Article;
 
 public interface ArticleService {
 	boolean addArticle(Article article);
-	List<Article> findAllArticle();
+	List<Article> findAllArticle(String condition);
+	Article findArticleByArticleId(int articleId);
 
 }

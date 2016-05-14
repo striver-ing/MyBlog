@@ -10,8 +10,22 @@ public class ArticleAction extends ActionSupport{
 	Article article;
 	List<Article> articles;
 	ArticleService articleService;
+	int articleId;
+	int userId;
 	public Article getArticle() {
 		return article;
+	}
+	public int getArticleId() {
+		return articleId;
+	}
+	public void setArticleId(int articleId) {
+		this.articleId = articleId;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	public void setArticle(Article article) {
 		this.article = article;
@@ -34,6 +48,16 @@ public class ArticleAction extends ActionSupport{
 	
 	public String addArticle(){
 		return articleService.addArticle(article)? SUCCESS: ERROR;
+	}
+	
+	public String findAllArticle(){
+		this.setArticles(articleService.findAllArticle("order by date DESC"));
+		return SUCCESS;
+	}
+	
+	public String findArticleByArticleId(){
+		this.setArticle(articleService.findArticleByArticleId(articleId));
+		return SUCCESS;
 	}
 
 }

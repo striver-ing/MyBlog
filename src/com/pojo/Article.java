@@ -8,7 +8,7 @@ public class Article implements java.io.Serializable {
 
 	// Fields
 
-	private Integer id;
+	private Integer articleId;
 	private Integer userId;
 	private String title;
 	private String content;
@@ -46,12 +46,12 @@ public class Article implements java.io.Serializable {
 
 	// Property accessors
 
-	public Integer getId() {
-		return this.id;
+	public Integer getArticleId() {
+		return this.articleId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setArticleId(Integer articleId) {
+		this.articleId = articleId;
 	}
 
 	public Integer getUserId() {
