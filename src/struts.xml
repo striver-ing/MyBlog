@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="struts" extends="struts-default">
+		<!-- 图片上传 -->
+		<action name="ImgUpload" class="com.action.ImgUploadAction" method="imgUpload"/>
+		
+		<action name="addArticle" class = "articleAction" method = "addArticle">
+			<result name = "success">article_list.jsp</result>
+			<result name = "error">index.jsp</result>
+		</action>
+		
+	</package>
+
+
+</struts>
