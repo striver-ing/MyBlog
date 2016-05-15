@@ -27,19 +27,11 @@
         <property name="imgPath" type="java.lang.String">
             <column name="img_path" length="400" />
         </property>
-        <property name="classify" type="java.lang.String">
-            <column name="classify" length="45">
-                <comment>åˆ†ç±»</comment>
-            </column>
-        </property>
         <property name="date" type="java.lang.String">
             <column name="date" length="22" />
         </property>
         <property name="readedCount" type="java.lang.Integer">
             <column name="readed_count" />
-        </property>
-        <property name="commentCount" type="java.lang.Integer">
-            <column name="comment_count" />
         </property>
     </class>
 </hibernate-mapping>

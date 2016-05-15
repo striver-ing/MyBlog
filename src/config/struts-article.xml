@@ -9,8 +9,10 @@
 		<action name="ImgUpload" class="com.action.ImgUploadAction" method="imgUpload"/>
 		
 		<action name="addArticle" class = "articleAction" method = "addArticle">
-			<result name = "success" type = "redirectAction">findAllArticle</result>
-			<result name = "error">index.jsp</result>
+			<result name = "success" type = "chain">
+				<param name="namespace">/</param>
+				<param name="actionName">addArticleTypes</param>
+			</result>
 		</action>
 		
 		<action name = "findAllArticle" class = "articleAction" method = "findAllArticle">

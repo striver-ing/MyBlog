@@ -20,6 +20,7 @@
 		<property name="myeclipse.connection.profile">mysql</property>
 		<mapping resource="com/pojo/User.hbm.xml" />
 		<mapping resource="com/pojo/Article.hbm.xml" />
+		<mapping resource="com/pojo/Category.hbm.xml" />
 
 	</session-factory>
 

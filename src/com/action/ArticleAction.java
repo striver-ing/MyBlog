@@ -13,8 +13,15 @@ public class ArticleAction extends ActionSupport{
 	Article article;
 	List<Article> articles;
 	ArticleService articleService;
+	String articleTypes; //以逗号分割多个type
 	int articleId;
 	int userId;
+	public String getArticleTypes() {
+		return articleTypes;
+	}
+	public void setArticleTypes(String articleTypes) {
+		this.articleTypes = articleTypes;
+	}
 	public Article getArticle() {
 		return article;
 	}
@@ -50,7 +57,10 @@ public class ArticleAction extends ActionSupport{
 	//-------------------------------------
 	
 	public String addArticle(){
-		return articleService.addArticle(article)? SUCCESS: ERROR;
+		Article article_ = articleService.addArticle(article);
+		this.setArticleId(article_.getArticleId());
+		System.out.println("articleTypes = " + articleTypes);
+		return SUCCESS;
 	}
 	
 	//按日期由近到远排序

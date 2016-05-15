@@ -19,12 +19,14 @@ import com.tools.Timer;
 public class ArticleServiceImpl extends HibernateDaoSupport implements
 		ArticleService {
 	@Override
-	public boolean addArticle(Article article) {
+	public Article addArticle(Article article) {
 		// TODO Auto-generated method stub
 		dealOrtherAttribute(article);
 		article.setReadedCount(0);
 		this.getHibernateTemplate().save(article);
-		return true;
+		//取article 以便得到id
+		String hql = "from Article order by articleId DESC limit 1";
+		return (Article) this.getHibernateTemplate().find(hql).get(0);
 	}
 
 	@Override
@@ -61,11 +63,12 @@ public class ArticleServiceImpl extends HibernateDaoSupport implements
 	}
 	
 	@Override
-	public void updateArticle(Article article) {
+	public Article updateArticle(Article article) {
 		// TODO Auto-generated method stub
 		dealOrtherAttribute(article);
 		
 		this.getHibernateTemplate().update(article);
+		return article;
 	}
 	
 	

@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page import = "com.pojo.User" %>
+<%@ page import = "com.tools.Constants" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -32,6 +34,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
   </head>
   
+  <% 
+  	 User user=(User)session.getAttribute(Constants.USER);
+      if(user == null){
+  		response.sendRedirect("index.jsp");
+  	  }
+  %>
+  
   <body>
 	    <form action="addArticle.action" method="post">
 			<div class="wrapper">
@@ -42,6 +51,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<br />
 				
 				<textarea id="editor" name="article.content" placeholder="这里输入内容..."></textarea>
+				<br />
+				
+				<input type="text" class="form-control" name="articleTypes" placeholder="博客分类（多个分类之间用,分割)" autofocus>
 				<br />
 				
 				<br />
@@ -76,6 +88,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    leaveConfirm: '正在上传文件...' //当在文件上传时离开页面的提示信息
 			} 
 		});
-  	})
+  	}) 
   </script>
 </html>

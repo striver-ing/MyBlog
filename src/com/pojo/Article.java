@@ -14,10 +14,8 @@ public class Article implements java.io.Serializable {
 	private String content;
 	private String abstract_;
 	private String imgPath;
-	private String classify;
 	private String date;
 	private Integer readedCount;
-	private Integer commentCount;
 
 	// Constructors
 
@@ -33,17 +31,14 @@ public class Article implements java.io.Serializable {
 
 	/** full constructor */
 	public Article(Integer userId, String title, String content,
-			String abstract_, String imgPath, String classify, String date,
-			Integer readedCount, Integer commentCount) {
+			String abstract_, String imgPath, String date, Integer readedCount) {
 		this.userId = userId;
 		this.title = title;
 		this.content = content;
 		this.abstract_ = abstract_;
 		this.imgPath = imgPath;
-		this.classify = classify;
 		this.date = date;
 		this.readedCount = readedCount;
-		this.commentCount = commentCount;
 	}
 
 	// Property accessors
@@ -96,14 +91,6 @@ public class Article implements java.io.Serializable {
 		this.imgPath = imgPath;
 	}
 
-	public String getClassify() {
-		return this.classify;
-	}
-
-	public void setClassify(String classify) {
-		this.classify = classify;
-	}
-
 	public String getDate() {
 		return this.date;
 	}
@@ -118,14 +105,6 @@ public class Article implements java.io.Serializable {
 
 	public void setReadedCount(Integer readedCount) {
 		this.readedCount = readedCount;
-	}
-
-	public Integer getCommentCount() {
-		return this.commentCount;
-	}
-
-	public void setCommentCount(Integer commentCount) {
-		this.commentCount = commentCount;
 	}
 
 }

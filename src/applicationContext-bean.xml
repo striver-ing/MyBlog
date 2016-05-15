@@ -26,4 +26,14 @@
 		<property name="articleService" ref = "articleService"></property>
 	</bean>
 	
+	<!-- 博客分类 -->
+	<bean id = "categoryService" class = "com.serviceImpl.CategoryServiceImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name = "categoryAction" class = "com.action.CategoryAction">
+		<property name="categoryService" ref = "categoryService"></property>
+	</bean>
+	
+	
+	
 </beans>
