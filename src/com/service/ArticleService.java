@@ -10,5 +10,5 @@ public interface ArticleService {
 	Article findArticleByArticleId(int articleId);
 	void deleteArticleByArticleId(int articleId);
 	void updateArticle(Article article);
-
+	Article readArticle(int articleId);
 }

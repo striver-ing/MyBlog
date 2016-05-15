@@ -69,13 +69,18 @@ public class ArticleAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
-	public String findArticleByArticleId(){
-		this.setArticle(articleService.findArticleByArticleId(articleId));
+	public String readArticle(){
+		this.setArticle(articleService.readArticle(articleId));
 		return SUCCESS;
 	}
 	
 	public String deleteArticleByArticleId(){
 		articleService.deleteArticleByArticleId(articleId);
+		return SUCCESS;
+	}
+	
+	public String updateArticlePre(){
+		this.setArticle(articleService.findArticleByArticleId(articleId));
 		return SUCCESS;
 	}
 	

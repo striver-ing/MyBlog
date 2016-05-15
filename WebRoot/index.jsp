@@ -55,11 +55,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- 贴图 -->
     <img src = <s:property value = "#article.imgPath"/> width = "80px">
     <!-- 文章标题 -->
-    <a href = "findArticleByArticleId.action?articleId=<s:property value = "#article.articleId"/>"><s:property value = "#article.title"/></a>
+    <a href = "readArticle.action?articleId=<s:property value = "#article.articleId"/>"><s:property value = "#article.title"/></a>
     <br>
     <!-- 摘要 -->
     <s:property value = "#article.abstract_"/>
     <br>
+    <!-- 阅读 -->
+    阅读:<s:property value = "#article.readedCount"/>
     <!-- 日期 -->
     date:<s:property value = "#article.date"/>
     <!--  操作 -->

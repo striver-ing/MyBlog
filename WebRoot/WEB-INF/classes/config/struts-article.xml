@@ -21,7 +21,7 @@
 			<result name = "success">index.jsp</result>
 		</action>
 		
-		<action name = "findArticleByArticleId" class = "articleAction" method = "findArticleByArticleId">
+		<action name = "readArticle" class = "articleAction" method = "readArticle">
 			<result name = "success">article_view.jsp</result>
 		</action>
 		
@@ -29,7 +29,7 @@
 			<result name = "success" type="redirectAction">findAllArticle</result>
 		</action>
 		
-		<action name = "updateArticlePre" class = "articleAction" method = "findArticleByArticleId">
+		<action name = "updateArticlePre" class = "articleAction" method = "updateArticlePre">
 			<result name = "success">update_acticle.jsp</result>
 		</action>
 		

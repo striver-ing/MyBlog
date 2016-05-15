@@ -22,6 +22,7 @@ public class ArticleServiceImpl extends HibernateDaoSupport implements
 	public boolean addArticle(Article article) {
 		// TODO Auto-generated method stub
 		dealOrtherAttribute(article);
+		article.setReadedCount(0);
 		this.getHibernateTemplate().save(article);
 		return true;
 	}
@@ -39,6 +40,16 @@ public class ArticleServiceImpl extends HibernateDaoSupport implements
 	public Article findArticleByArticleId(int articleId) {
 		// TODO Auto-generated method stub
 		Article article = (Article)this.getHibernateTemplate().get(Article.class, articleId);
+		return article;
+	}
+	
+	@Override
+	public Article readArticle(int articleId) {
+		// TODO Auto-generated method stub
+		Article article = findArticleByArticleId(articleId);
+		int readedCount = article.getReadedCount() == null ? 0 : article.getReadedCount();
+		article.setReadedCount(readedCount + 1);
+		this.getHibernateTemplate().update(article);
 		return article;
 	}
 	
