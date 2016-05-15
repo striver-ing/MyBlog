@@ -17,6 +17,10 @@
 			<result name = "success">article_list.jsp</result>
 		</action>
 		
+		<action name = "findHotArticle" class = "articleAction" method = "findHotArticle">
+			<result name = "success">index.jsp</result>
+		</action>
+		
 		<action name = "findArticleByArticleId" class = "articleAction" method = "findArticleByArticleId">
 			<result name = "success">article_view.jsp</result>
 		</action>

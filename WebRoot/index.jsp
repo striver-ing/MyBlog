@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import = "com.pojo.Article" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -18,12 +19,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	
+	<!--  直接输入网址请求这个页面时  先跳转到action 取博客 -->
+	<%
+  		List<Article> articles = (List<Article>) request.getAttribute("articles");
+  		if(articles == null){%>
+  		<script language="javascript" type="text/javascript">
+             window.location.href="findHotArticle.action"; 
+        </script>
+  		<%}
+   %>
+	
   </head>
   
   <body>
   <center>
-  	<h3><a href = "login.jsp" >登录</a></h3>
-  	<h3><a href = "findAllArticle" >查看博客列表</a></h3>
-  	<h3><a href = "blog_edit.jsp" >编辑博客</a></h3>
+  <br><br><br>	
+  	<table width = 960px>
+  		<tr align="center">
+  			<td width = 240px><a href = "">首页（热门博客)</a></td>
+  			<td width = 240px><a href = "findAllArticle" >博客列表</a></td>
+  			<td width = 240px><a href = "blog_edit.jsp" >写博客</a></td>
+  			<td width = 240px><a href = "login.jsp" >登录</a></td>
+  		</tr>
+  	</table>
   </center>
+  
+  <!-- 用户名 -->
+  ${user.name}
+  
+  <!-- 博客列表 -->
+  <div class="container">
+  	<!-- 循环取博客 -->
+    <s:iterator value = "articles" id = "article">
+    <!-- 贴图 -->
+    <img src = <s:property value = "#article.imgPath"/> width = "80px">
+    <!-- 文章标题 -->
+    <a href = "findArticleByArticleId.action?articleId=<s:property value = "#article.articleId"/>"><s:property value = "#article.title"/></a>
+    <br>
+    <!-- 摘要 -->
+    <s:property value = "#article.abstract_"/>
+    <br>
+    <!-- 日期 -->
+    date:<s:property value = "#article.date"/>
+    <!--  操作 -->
+    <s:if test="#article.userId != null">
+    <a href = "updateArticlePre.action?articleId=<s:property value = "#article.articleId"/>">编辑</a>
+    <a href = "deleteArticleByArticleId?articleId=<s:property value = "#article.articleId"/>">删除</a>
+    </s:if>
+   	<br>
+   	<br>
+   	<br>
+   	<br>
+    </s:iterator>
+    
+   </div>
+  	
+  	
+  
 </html>

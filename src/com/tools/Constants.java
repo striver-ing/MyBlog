@@ -7,4 +7,6 @@ public class Constants {
 	public final static String LOGIN_ERROR_PWD = "ÃÜÂë´íÎó";
 	
 	public final static String USER = "user";
+	public final static String BLOGS = "blogs";
+	
 }
