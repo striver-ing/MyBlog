@@ -30,7 +30,7 @@
 			<tx:method name="regist*" propagation="REQUIRED"/>
 			<tx:method name="upd*" propagation="REQUIRED"/>
 			<tx:method name="del*" propagation="REQUIRED"/>
-			<tx:method name="*" read-only="true"/>
+			<!-- <tx:method name="*" read-only="true"/> -->
 		</tx:attributes>
 	</tx:advice>
 	

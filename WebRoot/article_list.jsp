@@ -18,13 +18,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	
+	<link media="all" rel="stylesheet" type="text/css" href="bootstrap/styles/bootstrap.css" />
 
   </head>
   
   <body>
+  <!-- 用户名 -->
+  ${user.name}
+  
+  <div class="container">
   	<!-- 循环取博客 -->
     <s:iterator value = "articles" id = "article">
     <!-- 贴图 -->
@@ -38,10 +41,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- 日期 -->
     date:<s:property value = "#article.date"/>
     <!--  操作 -->
+    <s:if test="#article.userId != null">
     <a href = "updateArticlePre.action?articleId=<s:property value = "#article.articleId"/>">编辑</a>
     <a href = "deleteArticleByArticleId?articleId=<s:property value = "#article.articleId"/>">删除</a>
+    </s:if>
+   	<br>
+   	<br>
    	<br>
    	<br>
     </s:iterator>
+    
+   </div>
   </body>
 </html>

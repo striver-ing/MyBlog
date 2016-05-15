@@ -11,6 +11,7 @@
 	<!-- 配置拦截器 校验器等一些公用的配置 -->
 	</package>
 	
+	<include file="config/struts-user.xml"/>
 	<include file="config/struts-article.xml"/>
 
 

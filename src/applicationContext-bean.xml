@@ -8,6 +8,16 @@
 	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+	
+	<!-- 用户 -->
+	<bean id = "userService" class = "com.serviceImpl.UserServiceImpl">
+		<!-- <property name="sessionFactory" ref = "sessionFactory"></property> -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name = "userAction" class = "com.action.UserAction">
+		<property name="userService" ref = "userService"></property>
+	</bean>
+	
 	<!-- 博客 -->
 	<bean id = "articleService" class = "com.serviceImpl.ArticleServiceImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>

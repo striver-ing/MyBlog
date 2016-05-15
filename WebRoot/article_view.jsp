@@ -49,8 +49,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 	<div class="container">
 		<div class="header">
-			<ul class="nav nav-pills pull-right" role="tablist">
-			</ul>
 			<h3 class="text-muted">${article.title}</h3>
 		</div>
 			

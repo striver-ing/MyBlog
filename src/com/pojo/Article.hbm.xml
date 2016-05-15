@@ -20,12 +20,12 @@
             <column name="content" not-null="true" />
         </property>
         <property name="abstract_" type="java.lang.String">
-            <column name="abstract" length="400">
+            <column name="abstract" length="500">
                 <comment>æ'˜è¦�</comment>
             </column>
         </property>
         <property name="imgPath" type="java.lang.String">
-            <column name="img_path" length="45" />
+            <column name="img_path" length="400" />
         </property>
         <property name="classify" type="java.lang.String">
             <column name="classify" length="45">

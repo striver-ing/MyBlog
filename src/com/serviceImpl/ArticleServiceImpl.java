@@ -1,11 +1,18 @@
 package com.serviceImpl;
 
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.pojo.Article;
+import com.pojo.User;
 import com.service.ArticleService;
+import com.tools.Constants;
 import com.tools.Html;
 import com.tools.Timer;
 
@@ -74,6 +81,17 @@ public class ArticleServiceImpl extends HibernateDaoSupport implements
 		
 		//时间
 		article.setDate(Timer.getData());
+		
+		//userId
+		//第一种取session中user 的方法
+		Map session = (Map)ActionContext.getContext().get("session");
+		User user = (User)session.get(Constants.USER);
+		//第二种取session中user 的方法
+		//HttpSession session=ServletActionContext.getRequest().getSession();
+		//User user = (User)session.getAttribute(Constants.USER);
+		if (user != null) {
+			article.setUserId(user.getUserId());
+		}
 	}
 
 }
