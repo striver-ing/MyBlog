@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- 日期 -->
     date:<s:property value = "#blog.date"/>
     <!--  操作 -->
-    <s:if test="#blog.userId != null">
+    <s:if test="#session.user != null">
     <a href = "updateBlogPre.action?blogId=<s:property value = "#blog.blogId"/>">编辑</a>
     <a href = "deleteBlogByBlogId?blogId=<s:property value = "#blog.blogId"/>">删除</a>
     </s:if>

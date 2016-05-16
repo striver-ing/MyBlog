@@ -2,8 +2,9 @@ package com.serviceImpl;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.pojo.BlogCategory;
 import com.service.CategoryService;
-import com.pojo.Category;
+import com.tools.Constants;
 
 public class CategoryServiceImpl extends HibernateDaoSupport implements
 		CategoryService {
@@ -14,11 +15,31 @@ public class CategoryServiceImpl extends HibernateDaoSupport implements
 		if(articleTypes == null) return;
 		
 		String[] types = articleTypes.split(",|，");
-		for(String type : types){
+		for (int i = 0; i < types.length; i++) {
+			//去重 拿当前str与后面的比较 如果后面有 则忽略当前的
+			int j;
+			for (j = i + 1; j < types.length; j++) {
+				if (types[i].equals(types[j])) {
+					break;
+				}
+			}
+			if (j != types.length) {
+				continue;
+			}
+			
+			String type = types[i];
+			System.out.print(type + " ; ");
 			//将分类存入数据库
-			Category category = new Category(articleId, type.trim(), articleAttribute);
-			this.getHibernateTemplate().save(category);
+			if (articleAttribute .equals(Constants.BLOG)) {
+				BlogCategory category = new BlogCategory(articleId, type.trim());
+				this.getHibernateTemplate().save(category);
+			}else if(articleAttribute .equals(Constants.DIARY)){
+				
+			}else if(articleAttribute .equals(Constants.ESSAY)){
+				
+			}
 		}
+		
 	}
 
 }

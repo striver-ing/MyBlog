@@ -4,12 +4,10 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.pojo.Category;
 import com.service.CategoryService;
 
 public class CategoryAction extends ActionSupport {
 	CategoryService categoryService;
-	Category categoty;
 	int articleId;
 	String articleTypes;
 	String articleAttribute;
@@ -37,12 +35,6 @@ public class CategoryAction extends ActionSupport {
 	}
 	public void setCategoryService(CategoryService categoryService) {
 		this.categoryService = categoryService;
-	}
-	public Category getCategoty() {
-		return categoty;
-	}
-	public void setCategoty(Category categoty) {
-		this.categoty = categoty;
 	}
 	
 	public String addArticleTypes(){
