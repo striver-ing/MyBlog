@@ -76,6 +76,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </s:iterator>
     
    </div>
+   
+   <!-- 分类 -->
+   <!-- <s:include value="blog_category.jsp"></s:include> -->
   	
   	
   

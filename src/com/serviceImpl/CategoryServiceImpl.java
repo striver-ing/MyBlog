@@ -1,5 +1,7 @@
 package com.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.pojo.BlogCategory;
@@ -40,6 +42,43 @@ public class CategoryServiceImpl extends HibernateDaoSupport implements
 			}
 		}
 		
+	}
+	
+	@Override
+	public void deleteCategoryById(int category, String articleAttribute) {
+		// TODO Auto-generated method stub
+		if (articleAttribute .equals(Constants.BLOG)) {
+		}else if(articleAttribute .equals(Constants.DIARY)){
+			
+		}else if(articleAttribute .equals(Constants.ESSAY)){
+			
+		}
+	}
+	
+	@Override
+	public List findCategorys(String articleAttribute) {
+		// TODO Auto-generated method stub
+		String hql = null;
+		if (articleAttribute .equals(Constants.BLOG)) {
+			hql = "from BlogCategory group by blogType";
+		}else if(articleAttribute .equals(Constants.DIARY)){
+			
+		}else if(articleAttribute .equals(Constants.ESSAY)){
+			
+		}
+		this.getHibernateTemplate().find(hql);
+		return this.getHibernateTemplate().find(hql);
+	}
+	
+	@Override
+	public void updateCategory(String articleTypes, String articleAttribute) {
+		// TODO Auto-generated method stub
+		if (articleAttribute .equals(Constants.BLOG)) {
+		}else if(articleAttribute .equals(Constants.DIARY)){
+			
+		}else if(articleAttribute .equals(Constants.ESSAY)){
+			
+		}
 	}
 
 }

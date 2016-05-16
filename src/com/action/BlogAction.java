@@ -81,7 +81,6 @@ public class BlogAction extends ActionSupport{
 		this.setArticleId(blog_.getBlogId());
 		this.setArticleAttribute(Constants.BLOG);
 		this.setArticleTypes(articleTypes);
-		System.out.println("articleId = " + articleId + " articleTypes = " + articleTypes  + " articleAttribute =  " + articleAttribute);
 		return SUCCESS;
 	}
 	
