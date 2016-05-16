@@ -33,19 +33,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	    <form action="updateArticle.action" method="post">
+	    <form action="updateBlog.action" method="post">
 			<div class="wrapper">
 				<br />
 				<br />
 			
-				<input type="text" class="form-control" name="article.title" value="${article.title}">
+				<input type="text" class="form-control" name="blog.title" value="${blog.title}">
 				<br />
 				
-				<textarea id="editor" name="article.content" autofocus>${article.content}</textarea>
+				<textarea id="editor" name="blog.content" autofocus>${blog.content}</textarea>
 				<br />
 				
 				<br />
-				<textarea name="article.abstract_" class="form-control" rows=3>${article.abstract_}</textarea>
+				<textarea name="blog.abstract_" class="form-control" rows=3>${blog.abstract_}</textarea>
 				<br />
 				<br />
 				

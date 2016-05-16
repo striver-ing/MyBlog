@@ -16,5 +16,8 @@
         <property name="articleType" type="java.lang.String">
             <column name="article_type" length="45" />
         </property>
+        <property name="articleAttribute" type="java.lang.String">
+            <column name="article_attribute" length="45" />
+        </property>
     </class>
 </hibernate-mapping>

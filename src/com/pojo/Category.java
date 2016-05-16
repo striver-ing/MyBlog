@@ -11,6 +11,7 @@ public class Category implements java.io.Serializable {
 	private Integer categoryId;
 	private Integer articleId;
 	private String articleType;
+	private String articleAttribute;
 
 	// Constructors
 
@@ -24,9 +25,11 @@ public class Category implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Category(Integer articleId, String articleType) {
+	public Category(Integer articleId, String articleType,
+			String articleAttribute) {
 		this.articleId = articleId;
 		this.articleType = articleType;
+		this.articleAttribute = articleAttribute;
 	}
 
 	// Property accessors
@@ -53,6 +56,14 @@ public class Category implements java.io.Serializable {
 
 	public void setArticleType(String articleType) {
 		this.articleType = articleType;
+	}
+
+	public String getArticleAttribute() {
+		return this.articleAttribute;
+	}
+
+	public void setArticleAttribute(String articleAttribute) {
+		this.articleAttribute = articleAttribute;
 	}
 
 }

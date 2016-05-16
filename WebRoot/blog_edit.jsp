@@ -42,22 +42,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   %>
   
   <body>
-	    <form action="addArticle.action" method="post">
+	    <form action="addBlog.action" method="post">
 			<div class="wrapper">
 				<br />
 				<br />
 			
-				<input type="text" class="form-control" name="article.title" placeholder="这里输入标题..." autofocus>
+				<input type="text" class="form-control" name="blog.title" placeholder="这里输入标题..." autofocus>
 				<br />
 				
-				<textarea id="editor" name="article.content" placeholder="这里输入内容..."></textarea>
+				<textarea id="editor" name="blog.content" placeholder="这里输入内容..."></textarea>
 				<br />
 				
 				<input type="text" class="form-control" name="articleTypes" placeholder="博客分类（多个分类之间用,分割)" autofocus>
 				<br />
 				
 				<br />
-				<textarea name="article.abstract_" class="form-control" rows=3 placeholder="摘要..."></textarea>
+				<textarea name="blog.abstract_" class="form-control" rows=3 placeholder="摘要..."></textarea>
 				<br />
 				<br />
 				

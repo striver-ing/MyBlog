@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="struts-blog" extends="struts-base">
+		<!-- 图片上传 -->
+		<action name="ImgUpload" class="com.action.ImgUploadAction" method="imgUpload"/>
+		
+		<action name="addBlog" class = "blogAction" method = "addBlog">
+			<result name = "success" type = "chain">
+				<param name="namespace">/</param>
+				<param name="actionName">addArticleTypes</param>
+			</result>
+		</action>
+		
+		<action name = "findAllBlog" class = "blogAction" method = "findAllBlog">
+			<result name = "success">blog_list.jsp</result>
+		</action>
+		
+		<action name = "findHotBlog" class = "blogAction" method = "findHotBlog">
+			<result name = "success">index.jsp</result>
+		</action>
+		
+		<action name = "readBlog" class = "blogAction" method = "readBlog">
+			<result name = "success">blog_view.jsp</result>
+		</action>
+		
+		<action name = "deleteBlogByBlogId" class = "blogAction" method = "deleteBlogByBlogId">
+			<result name = "success" type="redirectAction">findAllBlog</result>
+		</action>
+		
+		<action name = "updateBlogPre" class = "blogAction" method = "updateBlogPre">
+			<result name = "success">blog_update.jsp</result>
+		</action>
+		
+		<action name = "updateBlog" class = "blogAction" method = "updateBlog">
+			<result name = "success">/blog_view.jsp</result>
+		</action>
+		
+	</package>
+
+
+</struts>

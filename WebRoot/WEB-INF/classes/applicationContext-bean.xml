@@ -19,11 +19,11 @@
 	</bean>
 	
 	<!-- 博客 -->
-	<bean id = "articleService" class = "com.serviceImpl.ArticleServiceImpl">
+	<bean id = "blogService" class = "com.serviceImpl.BlogServiceImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean name = "articleAction" class = "com.action.ArticleAction">
-		<property name="articleService" ref = "articleService"></property>
+	<bean name = "blogAction" class = "com.action.BlogAction">
+		<property name="blogService" ref = "blogService"></property>
 	</bean>
 	
 	<!-- 博客分类 -->

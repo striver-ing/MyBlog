@@ -9,14 +9,14 @@ public class CategoryServiceImpl extends HibernateDaoSupport implements
 		CategoryService {
 
 	@Override
-	public void addArticleTypes(int articleId, String articleTypes) {
+	public void addArticleTypes(int articleId, String articleTypes, String articleAttribute) {
 		// TODO Auto-generated method stub
 		if(articleTypes == null) return;
 		
 		String[] types = articleTypes.split(",|，");
 		for(String type : types){
 			//将分类存入数据库
-			Category category = new Category(articleId, type.trim());
+			Category category = new Category(articleId, type.trim(), articleAttribute);
 			this.getHibernateTemplate().save(category);
 		}
 	}

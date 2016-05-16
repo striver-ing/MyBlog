@@ -12,7 +12,14 @@ public class CategoryAction extends ActionSupport {
 	Category categoty;
 	int articleId;
 	String articleTypes;
+	String articleAttribute;
 	
+	public String getArticleAttribute() {
+		return articleAttribute;
+	}
+	public void setArticleAttribute(String articleAttribute) {
+		this.articleAttribute = articleAttribute;
+	}
 	public CategoryService getCategoryService() {
 		return categoryService;
 	}
@@ -39,8 +46,8 @@ public class CategoryAction extends ActionSupport {
 	}
 	
 	public String addArticleTypes(){
-		System.out.println("articleId = " + articleId + " articleTypes = " + articleTypes );
-		categoryService.addArticleTypes(articleId, articleTypes);
+		System.out.println("articleId = " + articleId + " articleTypes = " + articleTypes  + " articleAttribute =  " + articleAttribute);
+		categoryService.addArticleTypes(articleId, articleTypes, articleAttribute);
 		
 		return SUCCESS;
 	}

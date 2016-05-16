@@ -1,14 +1,14 @@
 package com.pojo;
 
 /**
- * Article entity. @author MyEclipse Persistence Tools
+ * Blog entity. @author MyEclipse Persistence Tools
  */
 
-public class Article implements java.io.Serializable {
+public class Blog implements java.io.Serializable {
 
 	// Fields
 
-	private Integer articleId;
+	private Integer blogId;
 	private Integer userId;
 	private String title;
 	private String content;
@@ -20,18 +20,18 @@ public class Article implements java.io.Serializable {
 	// Constructors
 
 	/** default constructor */
-	public Article() {
+	public Blog() {
 	}
 
 	/** minimal constructor */
-	public Article(String title, String content) {
+	public Blog(String title, String content) {
 		this.title = title;
 		this.content = content;
 	}
 
 	/** full constructor */
-	public Article(Integer userId, String title, String content,
-			String abstract_, String imgPath, String date, Integer readedCount) {
+	public Blog(Integer userId, String title, String content, String abstract_,
+			String imgPath, String date, Integer readedCount) {
 		this.userId = userId;
 		this.title = title;
 		this.content = content;
@@ -43,12 +43,12 @@ public class Article implements java.io.Serializable {
 
 	// Property accessors
 
-	public Integer getArticleId() {
-		return this.articleId;
+	public Integer getBlogId() {
+		return this.blogId;
 	}
 
-	public void setArticleId(Integer articleId) {
-		this.articleId = articleId;
+	public void setBlogId(Integer blogId) {
+		this.blogId = blogId;
 	}
 
 	public Integer getUserId() {

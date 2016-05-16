@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page import = "com.pojo.Article" %>
+<%@ page import = "com.pojo.Blog" %>
 <%@ page import = "com.tools.Constants" %>
 <%
 String path = request.getContextPath();
@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'article_list.jsp' starting page</title>
+    <title>My JSP 'blog_list.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -33,17 +33,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <%
   		final int PAGE_SIZE = 2;  //每页显示博客的数量
   		int pageCount; //总页数
-  		int articleCount; // 总文章数
+  		int blogCount; // 总文章数
   		int showPage; //当前显示的页数
-  		int articleTopPos; //该页第一个博客在总博客中排第几
-  		int articleEndPos; //该页最后一个博客在总博客中排第几
+  		int blogTopPos; //该页第一个博客在总博客中排第几
+  		int blogEndPos; //该页最后一个博客在总博客中排第几
   		
   		//赋值
-  		//articleCount
-  		List<Article> articles =(List<Article>)session.getAttribute(Constants.BLOGS);
-  		articleCount = articles.size();
+  		//blogCount
+  		List<Blog> blogs =(List<Blog>)session.getAttribute(Constants.BLOGS);
+  		blogCount = blogs.size();
   		//pageCount
-  		pageCount = articleCount % PAGE_SIZE == 0 ? articleCount / PAGE_SIZE : articleCount / PAGE_SIZE + 1;
+  		pageCount = blogCount % PAGE_SIZE == 0 ? blogCount / PAGE_SIZE : blogCount / PAGE_SIZE + 1;
 		//showPage
 		String count = (String)request.getParameter("showPage");
 		if(count == null){
@@ -54,41 +54,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		//如果showPage 大于最大页数 则 showpage = 最大页数 如果showpage 小于 1 则showpage = 1 (防止用户乱输入跳转页数)
 		showPage = showPage > pageCount ? pageCount : showPage < 1 ? 1 : showPage;
 		
-		//articleTopPos
-		articleTopPos = (showPage - 1) * PAGE_SIZE;
-		articleEndPos = articleTopPos + PAGE_SIZE - 1;
-		articleEndPos = articleEndPos > articleCount - 1 ? articleCount - 1 : articleEndPos;
+		//blogTopPos
+		blogTopPos = (showPage - 1) * PAGE_SIZE;
+		blogEndPos = blogTopPos + PAGE_SIZE - 1;
+		blogEndPos = blogEndPos > blogCount - 1 ? blogCount - 1 : blogEndPos;
 		
-		request.setAttribute("articleTopPos", articleTopPos);
-		request.setAttribute("articleEndPos", articleEndPos);
+		request.setAttribute("blogTopPos", blogTopPos);
+		request.setAttribute("blogEndPos", blogEndPos);
 		
 		System.out.println("showPage = " + showPage);
-		System.out.println("articleCount = " + articleCount);
+		System.out.println("blogCount = " + blogCount);
 		System.out.println("pageCount = " + pageCount);
-		System.out.println("articleTopPos = " + articleTopPos);
-		System.out.println("articleEndPos = " + articleEndPos);
+		System.out.println("blogTopPos = " + blogTopPos);
+		System.out.println("blogEndPos = " + blogEndPos);
 		System.out.println("------------------------------");
    %>
   
   <div class="container">
   
   	<!-- 循环取博客 在session中取 -->
-    <s:iterator value = "#session.blogs" id = "article" begin="#request.articleTopPos" end="#request.articleEndPos">
-    id : <s:property value = "#article.articleId"/>
+    <s:iterator value = "#session.blogs" id = "blog" begin="#request.blogTopPos" end="#request.blogEndPos">
+    id : <s:property value = "#blog.blogId"/>
     <!-- 贴图 -->
-    <img src = <s:property value = "#article.imgPath"/> width = "80px">
+    <img src = <s:property value = "#blog.imgPath"/> width = "80px">
     <!-- 文章标题 -->
-    <a href = "readArticle.action?articleId=<s:property value = "#article.articleId"/>"><s:property value = "#article.title"/></a>
+    <a href = "readBlog.action?blogId=<s:property value = "#blog.blogId"/>"><s:property value = "#blog.title"/></a>
     <br>
     <!-- 摘要 -->
-    <s:property value = "#article.abstract_"/>
+    <s:property value = "#blog.abstract_"/>
     <br>
     <!-- 日期 -->
-    date:<s:property value = "#article.date"/>
+    date:<s:property value = "#blog.date"/>
     <!--  操作 -->
-    <s:if test="#article.userId != null">
-    <a href = "updateArticlePre.action?articleId=<s:property value = "#article.articleId"/>">编辑</a>
-    <a href = "deleteArticleByArticleId?articleId=<s:property value = "#article.articleId"/>">删除</a>
+    <s:if test="#blog.userId != null">
+    <a href = "updateBlogPre.action?blogId=<s:property value = "#blog.blogId"/>">编辑</a>
+    <a href = "deleteBlogByBlogId?blogId=<s:property value = "#blog.blogId"/>">删除</a>
     </s:if>
    	<br>
    	<br>
@@ -96,11 +96,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	<br>
     </s:iterator>
     
-    <a href = "article_list.jsp?showPage=1">首页</a>
+    <a href = "blog_list.jsp?showPage=1">首页</a>
     <%for(int i = 1; i < (pageCount > 5 ? 5 : pageCount); ++i){ %>
-    <a href = "article_list.jsp?showPage=<%=i%>"><%=i%></a>
+    <a href = "blog_list.jsp?showPage=<%=i%>"><%=i%></a>
     <%}%>
-    <a href = "article_list.jsp?showPage=<%=pageCount%>">未页</a>
+    <a href = "blog_list.jsp?showPage=<%=pageCount%>">未页</a>
     
    </div>
   </body>

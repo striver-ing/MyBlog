@@ -49,10 +49,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 	<div class="container">
 		<div class="header">
-			<h3 class="text-muted">${article.title}</h3>
+			<h3 class="text-muted">${blog.title}</h3>
 		</div>
 			
-		${article.content}
+		${blog.content}
 	</div>
 </body>
 </html>
