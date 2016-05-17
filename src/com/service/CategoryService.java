@@ -10,6 +10,9 @@ public interface CategoryService {
 	 */
 	void addArticleTypes(int articleId, String articleTypes, String articleAttribute);
 	List findCategorys(String articleAttribute);
-	void deleteCategoryById(int category, String articleArrtibute);
-	void updateCategory(String articleTypes, String articleArrtibute);
+	void deleteCategoryByArticleType(String articleType, String articleAttribute);
+	void updateCategory(Object category, String articleAttribute);
+	Object findCategoryByCategoryId(int categoryId, String articleAttribute);
+	
+	List findArticlesByArticleType(String articleType, String articleAttribute);
 }

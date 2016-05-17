@@ -1,8 +1,11 @@
 package com.action;
 
 import java.util.List;
+import java.util.Map;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.pojo.Blog;
 import com.pojo.BlogCategory;
 import com.pojo.DiaryCategory;
 import com.pojo.EssayCategory;
@@ -13,14 +16,59 @@ public class CategoryAction extends ActionSupport {
 	CategoryService categoryService;
 	
 	int articleId;
-	String articleTypes;
+	int categoryId;
+	String articleTypes; //多个分类 逗号隔开 如java，c++ 用于添加
 	String articleAttribute;
+	String articleType; //单个分类  用于删除和编辑
+	
 	
 	List<BlogCategory> blogCategorys;
 	List<EssayCategory> essayCategorys;
 	List<DiaryCategory> diaryCategorys;
 	
+	BlogCategory blogCategory;
+	EssayCategory essayCategory;
+	DiaryCategory diaryCategory;
 	
+	List<Blog> blogs;
+	
+	
+	public List<Blog> getBlogs() {
+		return blogs;
+	}
+	public void setBlogs(List<Blog> blogs) {
+		this.blogs = blogs;
+	}
+	public int getCategoryId() {
+		return categoryId;
+	}
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+	public BlogCategory getBlogCategory() {
+		return blogCategory;
+	}
+	public void setBlogCategory(BlogCategory blogCategory) {
+		this.blogCategory = blogCategory;
+	}
+	public EssayCategory getEssayCategory() {
+		return essayCategory;
+	}
+	public void setEssayCategory(EssayCategory essayCategory) {
+		this.essayCategory = essayCategory;
+	}
+	public DiaryCategory getDiaryCategory() {
+		return diaryCategory;
+	}
+	public void setDiaryCategory(DiaryCategory diaryCategory) {
+		this.diaryCategory = diaryCategory;
+	}
+	public String getArticleType() {
+		return articleType;
+	}
+	public void setArticleType(String articleType) {
+		this.articleType = articleType;
+	}
 	public List<BlogCategory> getBlogCategorys() {
 		return blogCategorys;
 	}
@@ -74,10 +122,48 @@ public class CategoryAction extends ActionSupport {
 	public String findCategorys(){
 		if (articleAttribute .equals(Constants.BLOG)) {
 			this.setBlogCategorys(categoryService.findCategorys(Constants.BLOG));
+			for (BlogCategory blogCategory : blogCategorys) {
+				System.out.println(blogCategory.getBlogType());
+			}
+			System.out.println("-----------------");
 		}else if(articleAttribute .equals(Constants.DIARY)){
 		}else if(articleAttribute .equals(Constants.ESSAY)){
 		}
-		
 	    return articleAttribute;
+	}
+	
+	public String deleteCategoryByArticleType(){
+		categoryService.deleteCategoryByArticleType(articleType, articleAttribute);
+		return articleAttribute;
+	}
+	
+	public String findCategoryByCategoryId(){
+		if (articleAttribute .equals(Constants.BLOG)) {
+			this.setBlogCategory((BlogCategory)categoryService.findCategoryByCategoryId(categoryId, articleAttribute));
+		}else if(articleAttribute .equals(Constants.DIARY)){
+		}else if(articleAttribute .equals(Constants.ESSAY)){
+		}
+		return articleAttribute;
+	}
+	
+	public String updateCategory(){
+		if (articleAttribute .equals(Constants.BLOG)) {
+			categoryService.updateCategory(blogCategory, articleAttribute);
+		}else if(articleAttribute .equals(Constants.DIARY)){
+		}else if(articleAttribute .equals(Constants.ESSAY)){
+		}
+		return articleAttribute;
+	}
+	
+	public String findArticlesByArticleType(){
+		if (articleAttribute .equals(Constants.BLOG)) {
+			this.setBlogs(categoryService.findArticlesByArticleType(articleType, articleAttribute));
+			//把博客存到session中 以便分页
+			Map session = (Map)ActionContext.getContext().get("session");
+			session.put(Constants.BLOGS, blogs);
+		}else if(articleAttribute .equals(Constants.DIARY)){
+		}else if(articleAttribute .equals(Constants.ESSAY)){
+		}
+		return articleAttribute;
 	}
 }

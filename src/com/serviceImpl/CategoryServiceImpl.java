@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.pojo.Blog;
 import com.pojo.BlogCategory;
 import com.service.CategoryService;
 import com.tools.Constants;
@@ -45,9 +46,15 @@ public class CategoryServiceImpl extends HibernateDaoSupport implements
 	}
 	
 	@Override
-	public void deleteCategoryById(int category, String articleAttribute) {
+	public void deleteCategoryByArticleType(String articleType, String articleAttribute) {
 		// TODO Auto-generated method stub
 		if (articleAttribute .equals(Constants.BLOG)) {
+			// 数据库分类表中可能存有重复分类 先查出这些一样的分类 然后删除
+			String hql = "from BlogCategory where blogType = '" + articleType+"'";
+			List<BlogCategory> blogCategorys = this.getHibernateTemplate().find(hql);
+			for (BlogCategory blogCategory : blogCategorys) {
+				this.getHibernateTemplate().delete(blogCategory);
+			}
 		}else if(articleAttribute .equals(Constants.DIARY)){
 			
 		}else if(articleAttribute .equals(Constants.ESSAY)){
@@ -66,14 +73,31 @@ public class CategoryServiceImpl extends HibernateDaoSupport implements
 		}else if(articleAttribute .equals(Constants.ESSAY)){
 			
 		}
-		this.getHibernateTemplate().find(hql);
+		
 		return this.getHibernateTemplate().find(hql);
 	}
 	
 	@Override
-	public void updateCategory(String articleTypes, String articleAttribute) {
+	public void updateCategory(Object category, String articleAttribute) {
 		// TODO Auto-generated method stub
 		if (articleAttribute .equals(Constants.BLOG)) {
+			BlogCategory blogCategory = (BlogCategory)category;
+			int categoryId = blogCategory.getCategoryId();
+			String blogType = blogCategory.getBlogType();
+			// 数据库分类表中可能存有重复分类 先查出这些一样的分类 然后更新
+			//1. 找出原来的分类名
+			String hql = "from BlogCategory where categoryId = '" + categoryId+"'";
+			BlogCategory blogCategoryOlder =(BlogCategory) this.getHibernateTemplate().get(BlogCategory.class, categoryId);
+			String blogTypeOlder = blogCategoryOlder.getBlogType();
+			//2. 根据原来的分类名找出具有同样名字的分类
+			hql = "from BlogCategory where blogType = '" + blogTypeOlder+"'";
+			List<BlogCategory> blogCategorys = this.getHibernateTemplate().find(hql);
+			//3. 更新
+			for (BlogCategory blogCategory2 : blogCategorys) {
+				blogCategory2.setBlogType(blogType);
+				this.getHibernateTemplate().update(blogCategory2);
+			}
+			
 		}else if(articleAttribute .equals(Constants.DIARY)){
 			
 		}else if(articleAttribute .equals(Constants.ESSAY)){
@@ -81,4 +105,35 @@ public class CategoryServiceImpl extends HibernateDaoSupport implements
 		}
 	}
 
+	
+	@Override
+	public Object findCategoryByCategoryId(int categoryId, String articleAttribute) {
+		// TODO Auto-generated method stub
+		Object object = null;
+		if (articleAttribute .equals(Constants.BLOG)) {
+			object = this.getHibernateTemplate().get(BlogCategory.class, categoryId);
+		}else if(articleAttribute .equals(Constants.DIARY)){
+			
+		}else if(articleAttribute .equals(Constants.ESSAY)){
+			
+		}
+		return object;
+	}
+	
+	@Override
+	public List findArticlesByArticleType(String articleType, String articleAttribute) {
+		// TODO Auto-generated method stub
+		String hql = null;
+		if (articleAttribute .equals(Constants.BLOG)) {
+//			SELECT * FROM MyBlog.Blog where blog_id in (select blog_id from MyBlog.BlogCategory where blog_type = "fdd");
+			hql = "from Blog where blogId in (select blogId from BlogCategory where blogType = '"+ articleType +"')";
+			return this.getHibernateTemplate().find(hql);
+		}else if(articleAttribute .equals(Constants.DIARY)){
+			
+		}else if(articleAttribute .equals(Constants.ESSAY)){
+			
+		}
+		
+		return null;
+	}
 }

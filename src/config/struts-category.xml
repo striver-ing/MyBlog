@@ -15,6 +15,18 @@
 			<result name = "blog">blog_category.jsp</result>
 		</action>
 		
+		<action name = "deleteCategoryByArticleType" class = "categoryAction" method = "deleteCategoryByArticleType">
+			<result name = "blog" type = "chain">findCategorys</result>
+		</action>
+		
+		<action name = "updateCategory" class = "categoryAction" method = "updateCategory">
+			<result name = "blog" type = "chain">findCategorys</result>
+		</action>
+		
+		<action name = "findArticlesByArticleType" class = "categoryAction" method = "findArticlesByArticleType">
+			<result name = "blog">blog_list.jsp</result>
+		</action>
+		
 	</package>
 
 

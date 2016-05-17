@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
    
    <!-- 分类 -->
-   <!-- <s:include value="blog_category.jsp"></s:include> -->
+   <a href="blog_category.jsp">博客分类</a>
   	
   	
   

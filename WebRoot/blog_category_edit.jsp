@@ -33,14 +33,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    %>
   
   <body>
-  <a href = "blog_category_edit.jsp">编辑</a>
-  
-        <br>
-  		<br>
-  		<br>
-  
   	<s:iterator value = "blogCategorys" id = "blogCategory">
-  		<a href ="findArticlesByArticleType.action?articleType=<s:property value = "#blogCategory.blogType"/>&articleAttribute=blog"><s:property value = "#blogCategory.blogType"/></a>
+  		<form action="updateCategory.action" method="post">
+  			<input type = "hidden" name = "blogCategory.categoryId" value = "<s:property value = "#blogCategory.categoryId"/>">
+  			<input type = "hidden" name = "blogCategory.blogId" value = "<s:property value = "#blogCategory.blogId"/>">
+  			<input type = "hidden" name = "articleAttribute" value = "blog">
+  			<input type = "text" name = "blogCategory.blogType" value = "<s:property value = "#blogCategory.blogType"/>">
+  			<input type = "submit" value = "修改">
+  		</form>
+  		<a href = "deleteCategoryByArticleType.action?articleType=${blogCategory.blogType}&articleAttribute=blog"> 删除</a>
+  		<br>
+  		<br>
   		<br>
   	</s:iterator>
     
