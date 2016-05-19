@@ -13,12 +13,12 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ImgUploadAction extends ActionSupport {  
 	private static final long serialVersionUID = 1L;
 	private String err = "";  
-    private String msg;              //杩????淇℃??  
-    private File fileData;           //涓?浼????浠?  
-    private String fileDataFileName; //???浠跺??  
+    private String msg;              //返回信息  
+    private File fileData;           //上传文件  
+    private String fileDataFileName; //文件名  
   
     public String imgUpload() {  
-        //??峰??response???request瀵硅薄  
+        //获取response、request对象  
         ActionContext ac = ActionContext.getContext();  
         HttpServletResponse response = (HttpServletResponse) ac.get(ServletActionContext.HTTP_RESPONSE);  
         HttpServletRequest request = (HttpServletRequest) ac.get(ServletActionContext.HTTP_REQUEST);  
@@ -31,10 +31,11 @@ public class ImgUploadAction extends ActionSupport {
         } catch (IOException e1) {  
             e1.printStackTrace();  
         }  
-  
+        
+        //得到图片保存路径，这个路径是服务器上项目路径／upload
         String saveRealFilePath = ServletActionContext.getServletContext().getRealPath("/upload");  
         File fileDir = new File(saveRealFilePath);  
-        if (!fileDir.exists()) { //濡????涓?瀛???? ??????寤?   
+        if (!fileDir.exists()) { //如果不存在 则创建   
             fileDir.mkdirs();  
         }  
         File savefile;  
@@ -42,13 +43,13 @@ public class ImgUploadAction extends ActionSupport {
         try {  
             FileUtils.copyFile(fileData, savefile);  
         } catch (IOException e) {  
-            err = "???璇?"+e.getMessage();  
+            err = "错误"+e.getMessage();  
             e.printStackTrace();  
         }  
         String file_Name = request.getContextPath() + "/upload/" + fileDataFileName;  
         
         msg = "{\"success\":\"" + true + "\",\"file_path\":\"" + file_Name + "\"}";  
-        out.print(msg); //杩????msg淇℃??  
+        out.print(msg); //返回msg信息  
         return null;  
     }  
   
@@ -79,4 +80,4 @@ public class ImgUploadAction extends ActionSupport {
 	public void setFileDataFileName(String fileDataFileName) {
 		this.fileDataFileName = fileDataFileName;
 	}  
-}  
+}   

@@ -62,12 +62,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		request.setAttribute("blogTopPos", blogTopPos);
 		request.setAttribute("blogEndPos", blogEndPos);
 		
-		System.out.println("showPage = " + showPage);
+		/* System.out.println("showPage = " + showPage);
 		System.out.println("blogCount = " + blogCount);
 		System.out.println("pageCount = " + pageCount);
 		System.out.println("blogTopPos = " + blogTopPos);
 		System.out.println("blogEndPos = " + blogEndPos);
-		System.out.println("------------------------------");
+		System.out.println("------------------------------"); */
    %>
   
   <div class="container">

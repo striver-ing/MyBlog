@@ -5,10 +5,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Timer {
-	public static String getData(){
+	public static String getDate(){
+		Date date = new Date();
+//		yyyy-MM-dd HH:mm:ss EEEE
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return dateFormat.format(date);
+	}
+	
+	public static String getWeek(){
 		Date date = new Date();
 //		yyyy-MM-dd HH:mm:ss
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE");
 		return dateFormat.format(date);
 	}
 	

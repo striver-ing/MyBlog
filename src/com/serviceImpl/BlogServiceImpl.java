@@ -94,7 +94,7 @@ public class BlogServiceImpl extends HibernateDaoSupport implements
 		blog.setImgPath(imgPath);
 		
 		//时间
-		blog.setDate(Timer.getData());
+		blog.setDate(Timer.getDate());
 		
 		//userId
 		//第一种取session中user 的方法
