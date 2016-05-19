@@ -111,9 +111,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<li><a href="#"><img src="images/gengduo.png" class="top-2-img"></a>
 			<ul class="tanchucaidan2">
                             <li>
-                                <form action="" method="get">
-                                	<input name="sousuo" type="text" class="sousuo1">
-                                	    <button class="enniu">搜索</button>
+                                <form action="findBlogByKeyword.action" method="post">
+                                	<input name="keyword" type="text" class="sousuo1">
+                                	<input type = "submit" value = "查询">
                                 </form>
                             </li>
                         </ul>

@@ -4,9 +4,9 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<package name="struts-category" namespace="/" extends="struts-base">
+	<package name="struts-category" namespace="/" extends="struts-blog">
 		<action name="addArticleTypes" class = "categoryAction" method = "addArticleTypes">
-			<result name = "blog">blog_list.jsp</result>
+			<result name = "blog" type = "redirectAction">findAllBlog</result>
 			<!-- <result name = "blog">index.jsp</result> -->
 			<!-- <result name = "blog">index.jsp</result> -->
 		</action>

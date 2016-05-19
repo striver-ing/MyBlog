@@ -16,6 +16,7 @@ public class BlogAction extends ActionSupport{
 	BlogService blogService;
 	int blogId;
 	int userId;
+	String keyword;
 	
 	int articleId;  //文章id
 	String articleTypes; //以逗号分割多个type 文章分类
@@ -23,6 +24,12 @@ public class BlogAction extends ActionSupport{
 
 	
 	
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	public int getArticleId() {
 		return articleId;
 	}
@@ -98,6 +105,14 @@ public class BlogAction extends ActionSupport{
 	public String findHotBlog(){
 		this.setBlogs(blogService.findBlogs("order by readedCount DESC limit 5"));//limit 50  取50条记录
 		this.setArticleAttribute(Constants.BLOG);
+		return SUCCESS;
+	}
+	
+	//模糊查询博客
+	public String findBlogByKeyword(){
+		this.setBlogs(blogService.findBlogs("where title like'%"+keyword+"%'"));
+		Map session = (Map)ActionContext.getContext().get("session");
+		session.put(Constants.BLOGS, blogs);
 		return SUCCESS;
 	}
 	

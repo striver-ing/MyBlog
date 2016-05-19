@@ -33,6 +33,7 @@ public class BlogServiceImpl extends HibernateDaoSupport implements
 	public List<Blog> findBlogs(String condition) {
 		// TODO Auto-generated method stub
 		String hql = "from Blog " + condition;
+		System.out.println(hql);
 		List<Blog> blogs = (List<Blog>)this.getHibernateTemplate().find(hql);
 		
 		return blogs;
