@@ -81,7 +81,7 @@ public class BlogServiceImpl extends HibernateDaoSupport implements
 		if (abstract_ == "" || abstract_.trim().length() == 0) {
 			// 取文章前200字作为摘要 或者遇到图片结束 摘要后加...
 			abstract_ = Html.removeTag(content); // 去掉html标签
-			int endPos = abstract_.length() > 200 ? 200 : abstract_.length();
+			int endPos = abstract_.length() > 100 ? 100 : abstract_.length();
 			abstract_ = abstract_.substring(0, endPos) + "...";
 			blog.setAbstract_(abstract_);
 		}

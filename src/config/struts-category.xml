@@ -6,13 +6,17 @@
 <struts>
 	<package name="struts-category" namespace="/" extends="struts-base">
 		<action name="addArticleTypes" class = "categoryAction" method = "addArticleTypes">
-			<result name = "blog">index.jsp</result>
+			<result name = "blog">blog_list.jsp</result>
 			<!-- <result name = "blog">index.jsp</result> -->
 			<!-- <result name = "blog">index.jsp</result> -->
 		</action>
 		
 		<action name = "findCategorys" class = "categoryAction" method = "findCategorys">
-			<result name = "blog">blog_category.jsp</result>
+			<result name = "blog">index.jsp</result>
+		</action>
+		
+		<action name = "findCategorysFormBlogList" class = "categoryAction" method = "findCategorys">
+			<result name = "blog">blog_list.jsp</result>
 		</action>
 		
 		<action name = "deleteCategoryByArticleType" class = "categoryAction" method = "deleteCategoryByArticleType">

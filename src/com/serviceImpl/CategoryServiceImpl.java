@@ -1,5 +1,6 @@
 package com.serviceImpl;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -121,12 +122,16 @@ public class CategoryServiceImpl extends HibernateDaoSupport implements
 	}
 	
 	@Override
-	public List findArticlesByArticleType(String articleType, String articleAttribute) {
+	public List findArticlesByArticleType(int categoryId, String articleAttribute) {
 		// TODO Auto-generated method stub
 		String hql = null;
 		if (articleAttribute .equals(Constants.BLOG)) {
+			String articleType =((BlogCategory)this.getHibernateTemplate().get(BlogCategory.class, categoryId)).getBlogType();
+			
 //			SELECT * FROM MyBlog.Blog where blog_id in (select blog_id from MyBlog.BlogCategory where blog_type = "fdd");
 			hql = "from Blog where blogId in (select blogId from BlogCategory where blogType = '"+ articleType +"')";
+			System.out.println(hql);
+			System.out.println(this.getHibernateTemplate().find(hql).size());
 			return this.getHibernateTemplate().find(hql);
 		}else if(articleAttribute .equals(Constants.DIARY)){
 			

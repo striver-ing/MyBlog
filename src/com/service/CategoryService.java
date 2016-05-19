@@ -14,5 +14,5 @@ public interface CategoryService {
 	void updateCategory(Object category, String articleAttribute);
 	Object findCategoryByCategoryId(int categoryId, String articleAttribute);
 	
-	List findArticlesByArticleType(String articleType, String articleAttribute);
+	List findArticlesByArticleType(int categoryId, String articleAttribute);
 }

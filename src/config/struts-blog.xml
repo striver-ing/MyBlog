@@ -16,11 +16,17 @@
 		</action>
 		
 		<action name = "findAllBlog" class = "blogAction" method = "findAllBlog">
-			<result name = "success">blog_list.jsp</result>
+			<result name = "success" type = "chain">
+				<param name ="namespace">/</param>
+				<param name="actionName">findCategorysFormBlogList</param>
+			</result>
 		</action>
 		
 		<action name = "findHotBlog" class = "blogAction" method = "findHotBlog">
-			<result name = "success">index.jsp</result>
+			<result name = "success" type = "chain">
+				<param name ="namespace">/</param>
+				<param name="actionName">findCategorys</param>
+			</result>
 		</action>
 		
 		<action name = "readBlog" class = "blogAction" method = "readBlog">

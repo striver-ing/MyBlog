@@ -1,7 +1,13 @@
 package com.action;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -156,8 +162,17 @@ public class CategoryAction extends ActionSupport {
 	}
 	
 	public String findArticlesByArticleType(){
+		//转码
+//		String oldInputPath = URLEncoder.encode(articleType); //如果有加号需要转码
+//		try {
+//			articleType = new String(oldInputPath.getBytes("ISO-8859-1"),"utf-8"); //如果有中文需要转码
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
 		if (articleAttribute .equals(Constants.BLOG)) {
-			this.setBlogs(categoryService.findArticlesByArticleType(articleType, articleAttribute));
+			this.setBlogs(categoryService.findArticlesByArticleType(categoryId, articleAttribute));
 			//把博客存到session中 以便分页
 			Map session = (Map)ActionContext.getContext().get("session");
 			session.put(Constants.BLOGS, blogs);

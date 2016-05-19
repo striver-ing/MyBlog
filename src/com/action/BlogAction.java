@@ -90,13 +90,14 @@ public class BlogAction extends ActionSupport{
 		//把博客存到session中 以便分页
 		Map session = (Map)ActionContext.getContext().get("session");
 		session.put(Constants.BLOGS, blogs);
-
+		this.setArticleAttribute(Constants.BLOG);
 		return SUCCESS;
 	}
 	
 	//查找热门博客
 	public String findHotBlog(){
-		this.setBlogs(blogService.findBlogs("order by readedCount DESC limit 50"));//limit 50  取50条记录
+		this.setBlogs(blogService.findBlogs("order by readedCount DESC limit 5"));//limit 50  取50条记录
+		this.setArticleAttribute(Constants.BLOG);
 		return SUCCESS;
 	}
 	
