@@ -15,6 +15,7 @@
 	<include file="config/struts-user.xml"/>
 	<include file="config/struts-category.xml"/>
 	<include file="config/struts-blog.xml"/>
+	<include file="config/struts-diary.xml"/>
 
 
 </struts>

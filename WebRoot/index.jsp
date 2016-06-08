@@ -61,9 +61,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<ul class="dingjicaidan1">
 		   <li> <a href="#"><img src="images/white.png" class="top-1-img">	 </a>    	    	                                                                                              
                         <ul class="tanchucaidan1">
-                            <a href="blog_edit.jsp" target="_blank"><li>
-                                                        编辑博客
-                            </li><a>
+                            <li><a href="blog_edit.jsp?user=${ session.user}" target="_blank">写博客</a></li>
+                            <li><a href="diary/diary_edit.jsp?user=${ session.user}" target="_blank">写日记</a></li>
                             
                         </ul>
             </li>
@@ -110,7 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <li><a href="index.jsp">首页</a></li>
          <li><a href="findAllBlog">博客列表</a></li>
          <li><a href="shuo.jsp">碎言碎语</a></li>
-         <li><a href="riji.jsp">个人日记</a></li>
+         <li><a href="diary/diary_list.jsp">个人日记</a></li>
          <li><a href="xc.jsp">相册展示</a></li>        
          <li><a href="about.jsp">关于我</a></li>
          <!--<li><a href="guestbook.html">留言板</a></li>-->

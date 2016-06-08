@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="struts-diary" extends="struts-base">
+		<!-- 图片上传 -->
+		<action name="ImgUpload" class="com.action.ImgUploadAction" method="imgUpload"/>
+		
+		<action name="addDiary" class = "diaryAction" method = "addDiary">
+			<result name = "success">
+				index.jsp
+			</result>
+		</action>
+		
+		<action name = "findAllDiary" class = "diaryAction" method = "findAllDiary">
+			<result name = "success">diary/diary_list.jsp</result>
+		</action>
+				
+	</package>
+
+
+</struts>

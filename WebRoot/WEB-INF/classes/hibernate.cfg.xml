@@ -23,6 +23,8 @@
 		<mapping resource="com/pojo/BlogCategory.hbm.xml" />
 		<mapping resource="com/pojo/EssayCategory.hbm.xml" />
 		<mapping resource="com/pojo/DiaryCategory.hbm.xml" />
+		<mapping resource="com/pojo/Essay.hbm.xml" />
+		<mapping resource="com/pojo/Diary.hbm.xml" />
 
 	</session-factory>
 

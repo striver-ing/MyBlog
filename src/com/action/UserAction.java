@@ -37,7 +37,6 @@ public class UserAction extends ActionSupport {
 	
 	public String login(){
 		loginResult  = userService.login(user);
-		System.out.println(loginResult);
 		if (loginResult == Constants.LOGIN_SUCCESS) {
 			return SUCCESS;
 		}else{

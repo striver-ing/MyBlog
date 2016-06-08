@@ -97,9 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<ul class="dingjicaidan1">
 		   <li> <a href="#"><img src="images/white.png" class="top-1-img">	 </a>    	    	                                                                                              
                         <ul class="tanchucaidan1">
-                            <a href="blog_edit.jsp" target="_blank"><li>
-                                                        编辑博客
-                            </li><a>
+							<li> <a href="" target="_blank">编辑博客</a></li>
                             
                         </ul>
             </li>
@@ -123,15 +121,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    
 	    <div class="top-3">
 	    	<ul class="dingjicaidan3">
-		<li><a href="#"><img src="images/white.png" class="top-3-img"></a>
-			<ul class="tanchucaidan3">
-                            <a href="login.jsp" target="_blank"><li>
-                                                         登录
-                            </li></a>
-                        </ul>
-            </li>
-        </ul>
-	    </div>
+			<li><a href="#"><img src="images/white.png" class="top-3-img"></a>
+				<ul class="tanchucaidan3">
+					<li><a href="login.jsp" target="_blank">登录</a></li>
+                     
+                </ul>
+           	</li>
+       		</ul>
+	   </div>
 	    
 	</div>
 	
@@ -255,7 +252,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!--content end-->
     <!--footer-->
     <div id="footer">
-     <p>Design by:少年 2014-8-9</p>
+     <p>Design by:王倚晴</p>
     </div>
     <!--footer end-->
     <script type="text/javascript">jQuery(".lanmubox").slide({easing:"easeOutBounce",delayTime:400});</script>
