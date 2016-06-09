@@ -3,6 +3,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-CN">
@@ -42,6 +44,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 .enniu{width: 20px;}
 </style>
 
+<!--  直接输入网址请求这个页面时  先跳转到action 取博客 -->
+    <%
+  		if(request.getAttribute("essays") == null){%>
+        <script language="javascript" type="text/javascript">
+             window.location.href="findAllEssay.action"; 
+        </script>
+         <%}
+   %>
 
 </head>
 
@@ -112,36 +122,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <div class="weizi">
            <div class="wz_text">当前位置：<a href="#">首页</a>><h1>碎言碎语</h1></div>
            </div>
-          <ul class="say_box">
+           <!-- 如果使用iterator EL表达式取出来的值都是一样的 -->
+           <c:forEach items="${essays}" var = "essay">
+           	<ul class="say_box">
                      <div class="sy">
-                         <p> 那个可以任意挥霍的年纪，人们叫它'青春'。</p>
+                     	${essay.essayContent}
+                         <!-- <s:property value = "#essay.essayContent"/>  -->
                      </div>
-                  <span class="dateview">2014-5-31</span>
-          </ul>
-          <ul class="say_box">
-                     <div class="sy">
-                         <p> 过去就像回形针，把青春一页页的固定，然后变成了一本不被出版的书。</p>
+                     <s:if test="#session.user != null">
+                     <div style = "margin-left:680px">
+                     	<a href = "delEssayById?essayId=${essay.essayId}">删除</a>
                      </div>
-                  <span class="dateview">2014-5-31</span>
+                     </s:if>
+                  <span class="dateview">${essay.date }</span>
           </ul>
-          <ul class="say_box">
-                     <div class="sy">
-                         <p> 时间好象一把尺子，它能衡量奋斗者前进的进程。
-                         时间如同一架天平，它能称量奋斗者成果的重量；
-                         时间就像一把皮鞭，它能鞭策我们追赶人生的目标。时间犹如一面战鼓，它能激励我们加快前进的脚步。</p>
-                     </div>
-                  <span class="dateview">2014-5-31</span>
-          </ul>
-          <ul class="say_box">
-                     <div class="sy">
-                         <p>青春，一半明媚，一半忧伤。
-                         它是一本惊天地泣鬼神的着作，而我们却读的太匆忙。
-                         于不经意间，青春的书籍悄然合上，以至于我们要重新研读它时，
-                         却发现青春的字迹早已落满尘埃，模糊不清。
-                         </p>
-                     </div>
-                  <span class="dateview">2014-5-31</span>
-          </ul>
+           </c:forEach>
      </div>
     <!--content end-->
     <!--footer-->

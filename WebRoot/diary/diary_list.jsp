@@ -109,13 +109,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
 
 <!--  直接输入网址请求这个页面时  先跳转到action 取博客 -->
-<%
+    <%
   		List<Diary> diarys = (List<Diary>) request.getAttribute("diarys");
   		if(diarys == null){%>
-<script language="javascript" type="text/javascript">
+        <script language="javascript" type="text/javascript">
              window.location.href="findAllDiary.action"; 
         </script>
-<%}
+         <%}
    %>
 
 </head>
@@ -221,7 +221,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</p>
 						 <img src="images/left.png" width="13" height="16" alt="左图标" />
 							<a href = "findDiaryById.action?diaryId=<s:property value = "#diary.diaryId"/>"><s:property value = "#diary.abstract_"/></a>
+							<s:if test="#session.user != null">
 							<div style="margin-top:50px; margin-left:500px"><a href = "delDiaryById.action?diaryId=?diaryId=<s:property value = "#diary.diaryId"/>">删除</a></div>
+							</s:if>
 						</div>
 						<div class="clear"></div>
 					</div>

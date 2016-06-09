@@ -42,15 +42,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   %>
   
   <body>
-	    <form action="addDiary.action" method="post">
-	    <input type = "hidden" name = "articleAttribute" value = "diary">
+	    <form action="addEssay.action" method="post">
 			<div class="wrapper">
 				<br />
 				<br />
-				<textarea id="editor" name="diary.content" placeholder="这里输入内容..." autofocus></textarea>
-				<br />
-				
-				<input type="text" class="form-control" name="articleTypes" placeholder="日记分类（多个分类之间用,分割)" autofocus>
+				<textarea id="editor" name="essay.essayContent" placeholder="随便说点啥吧..." autofocus></textarea>
 				<br />
 				
 				<br />

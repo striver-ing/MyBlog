@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="struts-essay" extends="struts-base">
+		<!-- 图片上传 -->
+		<action name="ImgUpload" class="com.action.ImgUploadAction" method="imgUpload"/>
+		
+		<action name="addEssay" class = "essayAction" method = "addEssay">
+			<result name = "success" type = "redirectAction">findAllEssay</result>
+		</action>
+		
+		<action name="delEssayById" class = "essayAction" method = "delEssayById">
+			<result name = "success" type = "redirectAction">findAllEssay</result>
+		</action>
+		
+		<action name="findAllEssay" class = "essayAction" method = "findAllEssay">
+			<result name = "success">/essay/essay_list.jsp</result>
+		</action>
+		
+		
+	</package>
+
+
+</struts>

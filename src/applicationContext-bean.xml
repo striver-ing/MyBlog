@@ -26,12 +26,20 @@
 		<property name="blogService" ref = "blogService"></property>
 	</bean>
 	
-	<!-- 博客 -->
+	<!-- 日记 -->
 	<bean id = "diaryService" class = "com.serviceImpl.DiaryServiceImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name = "diaryAction" class = "com.action.DiaryAction">
 		<property name="diaryService" ref = "diaryService"></property>
+	</bean>
+	
+	<!-- 碎言碎语 -->
+	<bean id = "essayService" class = "com.serviceImpl.EssayServiceImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name = "essayAction" class = "com.action.EssayAction">
+		<property name="essayService" ref = "essayService"></property>
 	</bean>
 	
 	<!-- 分类 -->

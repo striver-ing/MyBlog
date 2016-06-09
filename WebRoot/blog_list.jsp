@@ -162,6 +162,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <div class="l_content">
               <!--wz-->
               <!-- 循环取博客 在session中取 -->
+        <%if (blogCount > 0){ %>
     	<s:iterator value = "#session.blogs" id = "blog" begin="#request.blogTopPos" end="#request.blogEndPos">
            <div class="wz">
            <!-- 文章标题 -->
@@ -190,6 +191,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              </dl>
             </div>
             </s:iterator>
+            <%}else{ %>
+            <p><br>该分类下没有博客<br><br><br></p>
+            <% }%>
            <!--wz end-->
            <center>
      		<%if (pageCount>1){ %>

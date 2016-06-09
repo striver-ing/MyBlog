@@ -132,6 +132,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<li><a href="diary/diary_edit.jsp?user=${ session.user}"
 							target="_blank">写日记</a>
 						</li>
+						<li><a href="essay/essay_edit.jsp?user=${ session.user}"
+							target="_blank">新碎言碎语</a>
+						</li>
 
 					</ul></li>
 			</ul>
@@ -179,7 +182,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</li>
 			<li><a href="findAllBlog">博客列表</a>
 			</li>
-			<li><a href="shuo.jsp">碎言碎语</a>
+			<li><a href="essay/essay_list.jsp">碎言碎语</a>
 			</li>
 			<li><a href="diary/diary_list.jsp">个人日记</a>
 			</li>
@@ -309,8 +312,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						   </li>
 						</s:iterator>
 					</ul>
-
-
 				</div>
 			</div>
 			<!--end-->
