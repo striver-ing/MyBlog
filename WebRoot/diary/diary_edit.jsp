@@ -53,6 +53,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input type="text" class="form-control" name="articleTypes" placeholder="日记分类（多个分类之间用,分割)" autofocus>
 				<br />
 				
+				<!-- 是否设置私有todo-->
+				
 				<br />
 				<br />
 				
