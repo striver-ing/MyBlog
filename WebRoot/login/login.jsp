@@ -1,12 +1,22 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-
-    <head>
-
-        <meta charset="utf-8">
-        <title>Fullscreen Login</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    
+    <title>My JSP 'login.jsp' starting page</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -20,21 +30,24 @@
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
-    </head>
-
+  </head>
+  
+  <body>
     <body oncontextmenu="return false">
 
         <div class="page-container">
             <h1>Login</h1>
-            <form action="" method="post">
+            <form action="login.action" method="post">
 				<div>
-					<input type="text" name="username" class="username" placeholder="Username" autocomplete="off"/>
+					<input type="text" name="user.name" class="username" placeholder="Username" autocomplete="off"/>
 				</div>
                 <div>
-					<input type="password" name="password" class="password" placeholder="Password" oncontextmenu="return false" onpaste="return false" />
+					<input type="password" name="user.pwd" class="password" placeholder="Password" oncontextmenu="return false" onpaste="return false" />
                 </div>
-                <button id="submit" type="button">Sign in</button>
+                <button id="submit" type="submit">Sign in</button>
             </form>
+			<br>
+            <font color="red">${loginResult}</font>
             <div class="connect">
                 <p>If we can only encounter each other rather than stay with each other,then I wish we had never encountered.</p>
 				<p style="margin-top:20px;">如果只是遇见，不能停留，不如不遇见。</p>
@@ -83,7 +96,5 @@
 		function is_hide(){ $(".alert").animate({"top":"-40%"}, 300) }
 		function is_show(){ $(".alert").show().animate({"top":"45%"}, 300) }
 		</script>
-    </body>
-
+  </body>
 </html>
-

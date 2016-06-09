@@ -9,7 +9,7 @@ public class DiaryCategory implements java.io.Serializable {
 	// Fields
 
 	private Integer categoryId;
-	private String diaryId;
+	private Integer diaryId;
 	private String diaryType;
 
 	// Constructors
@@ -19,7 +19,7 @@ public class DiaryCategory implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public DiaryCategory(String diaryId, String diaryType) {
+	public DiaryCategory(Integer diaryId, String diaryType) {
 		this.diaryId = diaryId;
 		this.diaryType = diaryType;
 	}
@@ -34,11 +34,11 @@ public class DiaryCategory implements java.io.Serializable {
 		this.categoryId = categoryId;
 	}
 
-	public String getDiaryId() {
+	public Integer getDiaryId() {
 		return this.diaryId;
 	}
 
-	public void setDiaryId(String diaryId) {
+	public void setDiaryId(Integer diaryId) {
 		this.diaryId = diaryId;
 	}
 

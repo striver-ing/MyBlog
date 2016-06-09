@@ -9,7 +9,7 @@ public class EssayCategory implements java.io.Serializable {
 	// Fields
 
 	private Integer categoryId;
-	private String essayId;
+	private Integer essayId;
 	private String essayType;
 
 	// Constructors
@@ -19,7 +19,7 @@ public class EssayCategory implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public EssayCategory(String essayId, String essayType) {
+	public EssayCategory(Integer essayId, String essayType) {
 		this.essayId = essayId;
 		this.essayType = essayType;
 	}
@@ -34,11 +34,11 @@ public class EssayCategory implements java.io.Serializable {
 		this.categoryId = categoryId;
 	}
 
-	public String getEssayId() {
+	public Integer getEssayId() {
 		return this.essayId;
 	}
 
-	public void setEssayId(String essayId) {
+	public void setEssayId(Integer essayId) {
 		this.essayId = essayId;
 	}
 

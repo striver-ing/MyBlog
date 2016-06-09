@@ -10,8 +10,8 @@
             <column name="category_id" />
             <generator class="identity" />
         </id>
-        <property name="diaryId" type="java.lang.String">
-            <column name="diary_id" length="45" />
+        <property name="diaryId" type="java.lang.Integer">
+            <column name="diary_id" />
         </property>
         <property name="diaryType" type="java.lang.String">
             <column name="diary_type" length="45" />

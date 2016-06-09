@@ -24,7 +24,7 @@ public class CategoryAction extends ActionSupport {
 	int articleId;
 	int categoryId;
 	String articleTypes; //多个分类 逗号隔开 如java，c++ 用于添加
-	String articleAttribute;
+	String articleAttribute; //分类属性 博客 日记 或者 碎言碎语
 	String articleType; //单个分类  用于删除和编辑
 	
 	
@@ -37,8 +37,22 @@ public class CategoryAction extends ActionSupport {
 	DiaryCategory diaryCategory;
 	
 	List<Blog> blogs;
+	List<Blog> diarys;
+	List<Blog> essays;
 	
 	
+	public List<Blog> getDiarys() {
+		return diarys;
+	}
+	public void setDiarys(List<Blog> diarys) {
+		this.diarys = diarys;
+	}
+	public List<Blog> getEssays() {
+		return essays;
+	}
+	public void setEssays(List<Blog> essays) {
+		this.essays = essays;
+	}
 	public List<Blog> getBlogs() {
 		return blogs;
 	}
@@ -125,17 +139,18 @@ public class CategoryAction extends ActionSupport {
 		return articleAttribute;
 	}
 	
-	public String findCategorys(){
-		if (articleAttribute .equals(Constants.BLOG)) {
-			this.setBlogCategorys(categoryService.findCategorys(Constants.BLOG));
-			for (BlogCategory blogCategory : blogCategorys) {
-				System.out.println(blogCategory.getBlogType());
-			}
-			System.out.println("-----------------");
-		}else if(articleAttribute .equals(Constants.DIARY)){
-		}else if(articleAttribute .equals(Constants.ESSAY)){
-		}
-	    return articleAttribute;
+	//查找所有分类 并将其存到session中
+	public String findAllCategorys(){
+		this.setBlogCategorys(categoryService.findCategorys(Constants.BLOG));
+		this.setDiaryCategorys(categoryService.findCategorys(Constants.DIARY));
+		this.setEssayCategorys(categoryService.findCategorys(Constants.ESSAY));
+		
+		Map session = (Map)ActionContext.getContext().get("session");
+		session.put(Constants.BLOG_CATEGORYS, blogCategorys);
+		session.put(Constants.DIARY_CATEGORYS, diaryCategorys);
+		session.put(Constants.ESSAY_CATEGORYS, essayCategorys);
+		
+		return articleAttribute;
 	}
 	
 	public String deleteCategoryByArticleType(){
@@ -161,23 +176,20 @@ public class CategoryAction extends ActionSupport {
 		return articleAttribute;
 	}
 	
-	public String findArticlesByArticleType(){
-		//转码
-//		String oldInputPath = URLEncoder.encode(articleType); //如果有加号需要转码
-//		try {
-//			articleType = new String(oldInputPath.getBytes("ISO-8859-1"),"utf-8"); //如果有中文需要转码
-//		} catch (UnsupportedEncodingException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
+	public String findArticlesByArticleType(){	
+		Map session = (Map)ActionContext.getContext().get("session");
 		if (articleAttribute .equals(Constants.BLOG)) {
 			this.setBlogs(categoryService.findArticlesByArticleType(categoryId, articleAttribute));
 			//把博客存到session中 以便分页
-			Map session = (Map)ActionContext.getContext().get("session");
 			session.put(Constants.BLOGS, blogs);
 		}else if(articleAttribute .equals(Constants.DIARY)){
+			this.setDiarys(categoryService.findArticlesByArticleType(categoryId, articleAttribute));
+			//把日记存到session中 以便分页 没写分页 先在一页全部展示
+			//session.put(Constants.DIARYS, blogs);
 		}else if(articleAttribute .equals(Constants.ESSAY)){
+			this.setEssays(categoryService.findArticlesByArticleType(categoryId, articleAttribute));
+			//把日记存到session中 以便分页 没写分页 先在一页全部展示
+			//session.put(Constants.ESSAYS, blogs);
 		}
 		return articleAttribute;
 	}

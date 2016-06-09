@@ -6,12 +6,12 @@
 <struts>
 	<package name="struts-user" extends="struts-base">
 		<action name="login" class = "userAction" method = "login">
-			<result name = "success">index.jsp</result>
+			<result name = "success">../index.jsp</result>
 			<result name = "error">login.jsp</result>
 		</action>
 		
 		<action name = "loginOut" class = "userAction" method = "loginOut">
-			<result name = "success">index.jsp</result>
+			<result name = "success">../index.jsp</result>
 		</action>
 		
 	</package>

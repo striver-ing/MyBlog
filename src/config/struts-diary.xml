@@ -9,8 +9,9 @@
 		<action name="ImgUpload" class="com.action.ImgUploadAction" method="imgUpload"/>
 		
 		<action name="addDiary" class = "diaryAction" method = "addDiary">
-			<result name = "success">
-				index.jsp
+			<result name = "success" type = "chain">
+				<param name="namespace">/</param>
+				<param name="actionName">addArticleTypes</param>
 			</result>
 		</action>
 		
@@ -18,6 +19,13 @@
 			<result name = "success">diary/diary_list.jsp</result>
 		</action>
 				
+		<action name = "delDiaryById" class = "diaryAction" method = "delDiaryById">
+			<result name = "success" type = "redirectAction">findAllDiary</result>
+		</action>
+		
+		<action name = "findDiaryById" class = "diaryAction" method = "findDiaryById">
+			<result name = "success">diary/diary_view.jsp</result>
+		</action>
 	</package>
 
 

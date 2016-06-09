@@ -1,12 +1,12 @@
 package com.serviceImpl;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.pojo.Blog;
 import com.pojo.BlogCategory;
+import com.pojo.DiaryCategory;
+import com.pojo.EssayCategory;
 import com.service.CategoryService;
 import com.tools.Constants;
 
@@ -16,7 +16,7 @@ public class CategoryServiceImpl extends HibernateDaoSupport implements
 	@Override
 	public void addArticleTypes(int articleId, String articleTypes, String articleAttribute) {
 		// TODO Auto-generated method stub
-		if(articleTypes == null) return;
+		if(articleTypes == null || articleTypes.equals("")) return;
 		
 		String[] types = articleTypes.split(",|£¬");
 		for (int i = 0; i < types.length; i++) {
@@ -38,6 +38,8 @@ public class CategoryServiceImpl extends HibernateDaoSupport implements
 				BlogCategory category = new BlogCategory(articleId, type.trim());
 				this.getHibernateTemplate().save(category);
 			}else if(articleAttribute .equals(Constants.DIARY)){
+				DiaryCategory category = new DiaryCategory(articleId, type.trim());
+				this.getHibernateTemplate().save(category);
 				
 			}else if(articleAttribute .equals(Constants.ESSAY)){
 				
@@ -70,9 +72,9 @@ public class CategoryServiceImpl extends HibernateDaoSupport implements
 		if (articleAttribute .equals(Constants.BLOG)) {
 			hql = "from BlogCategory group by blogType";
 		}else if(articleAttribute .equals(Constants.DIARY)){
-			
+			hql = "from DiaryCategory group by diaryType";
 		}else if(articleAttribute .equals(Constants.ESSAY)){
-			
+			hql = "from EssayCategory group by essayType";
 		}
 		
 		return this.getHibernateTemplate().find(hql);
@@ -125,20 +127,21 @@ public class CategoryServiceImpl extends HibernateDaoSupport implements
 	public List findArticlesByArticleType(int categoryId, String articleAttribute) {
 		// TODO Auto-generated method stub
 		String hql = null;
+		String articleType = null;
 		if (articleAttribute .equals(Constants.BLOG)) {
-			String articleType =((BlogCategory)this.getHibernateTemplate().get(BlogCategory.class, categoryId)).getBlogType();
-			
+			articleType =((BlogCategory)this.getHibernateTemplate().get(BlogCategory.class, categoryId)).getBlogType();
 //			SELECT * FROM MyBlog.Blog where blog_id in (select blog_id from MyBlog.BlogCategory where blog_type = "fdd");
 			hql = "from Blog where blogId in (select blogId from BlogCategory where blogType = '"+ articleType +"')";
-			System.out.println(hql);
-			System.out.println(this.getHibernateTemplate().find(hql).size());
-			return this.getHibernateTemplate().find(hql);
 		}else if(articleAttribute .equals(Constants.DIARY)){
-			
+			articleType =((DiaryCategory)this.getHibernateTemplate().get(DiaryCategory.class, categoryId)).getDiaryType();
+			hql = "from Diary where diaryId in (select diaryId from DiaryCategory where diaryType = '"+ articleType +"')";
 		}else if(articleAttribute .equals(Constants.ESSAY)){
-			
+			articleType =((EssayCategory)this.getHibernateTemplate().get(EssayCategory.class, categoryId)).getEssayType();
+			hql = "from Essay where essayId in (select essayId from EssayCategory where essayType = '"+ articleType +"')";
+		}else{
+			return null;
 		}
 		
-		return null;
+		return this.getHibernateTemplate().find(hql);
 	}
 }

@@ -191,13 +191,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             </s:iterator>
            <!--wz end-->
-     		
-     		<a href = "blog_list.jsp?showPage=1">首页</a>
-		    <%for(int i = 1; i < (pageCount > 5 ? 5 : pageCount); ++i){ %>
-		    <a href = "blog_list.jsp?showPage=<%=i%>"><%=i%></a>
-		    <%}%>
-		    <a href = "blog_list.jsp?showPage=<%=pageCount%>">未页</a>
-     		
+           <center>
+     		<%if (pageCount>1){ %>
+	     		<a href = "blog_list.jsp?showPage=1">首页</a>
+	     		<a href = "blog_list.jsp?showPage=<%=showPage-1%>">上一页</a>
+	     		<a href = "blog_list.jsp?showPage=<%=showPage+1%>">下一页</a>
+			    <a href = "blog_list.jsp?showPage=<%=pageCount%>">未页</a>
+		    <%} %>
+     		</center>
      		
            </div>
          </div>
@@ -212,37 +213,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <p>简介：</p>
            
           </div>
-          <!--栏目分类-->
-           <div class="lanmubox">
-              <div class="hd">
-               <ul><li>博客列表</li><li>碎言碎语</li><li class="hd_3">个人日记</li></ul>
-              </div>
-              <div class="bd">
-                <ul>
-					<s:iterator value = "blogCategorys" id = "blogCategory">
-                		<li>
-  							<a href ="findArticlesByArticleType.action?categoryId=<s:property value = "#blogCategory.categoryId"/>&articleAttribute=blog"><s:property value = "#blogCategory.blogType"/></a>
-  						</li>
-                	</s:iterator>
-				</ul>
-                 <ul>
-					<li><a href="#" title="网站项目实战开发（-）">网站项目实战开发（-）</a></li>
-					<li><a href="#" title="关于响应式布局">关于响应式布局</a></li>
-					<li><a href="#" title="如何创建个人博客网站">如何创建个人博客网站</a></li>
-					<li><a href="#" title="网站项目实战开发（二）">网站项目实战开发（二）</a></li>
-					<li><a href="#" title="为什么新站前期排名老是浮动？(转)">为什么新站前期排名老是浮动？(转)</a></li>
-				</ul>
-                 <ul>
-					<li><a href="#" title="网站项目实战开发（-）">网站项目实战开发（-）</a></li>
-					<li><a href="#" title="关于响应式布局">关于响应式布局</a></li>
-					<li><a href="#" title="如何创建个人博客网站">如何创建个人博客网站</a></li>
-					<li><a href="#" title="网站项目实战开发（二）">网站项目实战开发（二）</a></li>
-					<li><a href="#" title="为什么新站前期排名老是浮动？(转)">为什么新站前期排名老是浮动？(转)</a></li>
-				</ul>
-                 
-                
-              </div>
-           </div>
+         <!--栏目分类-->
+			<div class="lanmubox">
+				<div class="hd">
+					<ul>
+						<li>博客分类</li>
+						<li>日记分类</li>
+						<li class="hd_3">碎言碎语</li>
+					</ul>
+				</div>
+				<div class="bd">
+					<ul>
+						<s:iterator value="#session.blogCategorys" id="blogCategory">
+							<li>
+								<a href="findArticlesByArticleType.action?categoryId=<s:property value = "#blogCategory.categoryId"/>&articleAttribute=blog">
+									<s:property value="#blogCategory.blogType" />
+								</a>
+						   </li>
+						</s:iterator>
+					</ul>
+					<ul>
+						<s:iterator value="#session.diaryCategorys" id="diaryCategory">
+							<li>
+								<a href="findArticlesByArticleType.action?categoryId=<s:property value = "#diaryCategory.categoryId"/>&articleAttribute=diary">
+									<s:property value="#diaryCategory.diaryType" />
+								</a>
+						   </li>
+						</s:iterator>
+					</ul>
+					<ul>
+						<s:iterator value="#session.essayCategorys" id="essayCategory">
+							<li>
+								<a href="findArticlesByArticleType.action?categoryId=<s:property value = "#essayCategory.categoryId"/>&articleAttribute=diary">
+									<s:property value="#essayCategory.essayType" />
+								</a>
+						   </li>
+						</s:iterator>
+					</ul>
+
+
+				</div>
+			</div>
+			
            <!--end-->
          </div>
          <!--end  right-->

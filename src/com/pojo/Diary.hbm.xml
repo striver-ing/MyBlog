@@ -34,5 +34,8 @@
         <property name="temperature" type="java.lang.String">
             <column name="temperature" length="45" />
         </property>
+        <property name="abstract_" type="java.lang.String">
+            <column name="abstract" length="500" />
+        </property>
     </class>
 </hibernate-mapping>

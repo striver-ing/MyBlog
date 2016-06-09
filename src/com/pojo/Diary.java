@@ -17,6 +17,7 @@ public class Diary implements java.io.Serializable {
 	private String weather;
 	private String weatherImagePath;
 	private String temperature;
+	private String abstract_;
 
 	// Constructors
 
@@ -33,7 +34,7 @@ public class Diary implements java.io.Serializable {
 	/** full constructor */
 	public Diary(Integer userId, String content, String date, String week,
 			String address, String weather, String weatherImagePath,
-			String temperature) {
+			String temperature, String abstract_) {
 		this.userId = userId;
 		this.content = content;
 		this.date = date;
@@ -42,6 +43,7 @@ public class Diary implements java.io.Serializable {
 		this.weather = weather;
 		this.weatherImagePath = weatherImagePath;
 		this.temperature = temperature;
+		this.abstract_ = abstract_;
 	}
 
 	// Property accessors
@@ -116,6 +118,14 @@ public class Diary implements java.io.Serializable {
 
 	public void setTemperature(String temperature) {
 		this.temperature = temperature;
+	}
+
+	public String getAbstract_() {
+		return this.abstract_;
+	}
+
+	public void setAbstract_(String abstract_) {
+		this.abstract_ = abstract_;
 	}
 
 }

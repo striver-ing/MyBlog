@@ -7,16 +7,14 @@
 	<package name="struts-category" namespace="/" extends="struts-blog">
 		<action name="addArticleTypes" class = "categoryAction" method = "addArticleTypes">
 			<result name = "blog" type = "redirectAction">findAllBlog</result>
-			<!-- <result name = "blog">index.jsp</result> -->
+			<result name = "diary" type = "redirectAction">findAllCategorys</result>
 			<!-- <result name = "blog">index.jsp</result> -->
 		</action>
 		
-		<action name = "findCategorys" class = "categoryAction" method = "findCategorys">
+		<action name = "findAllCategorys" class = "categoryAction" method = "findAllCategorys">
 			<result name = "blog">index.jsp</result>
-		</action>
-		
-		<action name = "findCategorysFormBlogList" class = "categoryAction" method = "findCategorys">
-			<result name = "blog">blog_list.jsp</result>
+			<result name = "diary">diary/diary_list.jsp</result>
+			<result name = "essay">essay/essay_list.jsp</result>
 		</action>
 		
 		<action name = "deleteCategoryByArticleType" class = "categoryAction" method = "deleteCategoryByArticleType">
@@ -29,6 +27,8 @@
 		
 		<action name = "findArticlesByArticleType" class = "categoryAction" method = "findArticlesByArticleType">
 			<result name = "blog">blog_list.jsp</result>
+			<result name = "diary">diary/diary_list.jsp</result>
+			<result name = "essay">essay/essay_list.jsp</result>
 		</action>
 		
 	</package>

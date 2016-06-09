@@ -43,6 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
 	    <form action="addDiary.action" method="post">
+	    <input type = "hidden" name = "articleAttribute" value = "diary">
 			<div class="wrapper">
 				<br />
 				<br />
