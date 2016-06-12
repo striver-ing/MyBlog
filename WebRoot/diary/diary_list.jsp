@@ -228,7 +228,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 <img src="images/left.png" width="13" height="16" alt="左图标" />
 							<a href = "findDiaryById.action?diaryId=<s:property value = "#diary.diaryId"/>"><s:property value = "#diary.abstract_"/></a>
 							<s:if test="#session.user != null">
-							<div style="margin-top:50px; margin-left:500px"><a href = "delDiaryById.action?diaryId=?diaryId=<s:property value = "#diary.diaryId"/>">删除</a></div>
+							<div style="margin-top:50px; margin-left:500px"><a href = "delDiaryById.action?diaryId=<s:property value = "#diary.diaryId"/>">删除</a></div>
 							</s:if>
 						</div>
 						<div class="clear"></div>

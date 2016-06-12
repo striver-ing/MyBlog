@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Html{
     public static String removeTag(String content){
-    	Pattern pattern = Pattern.compile("<.+?>", Pattern.DOTALL);
+    	Pattern pattern = Pattern.compile("<.+?>|&nbsp", Pattern.DOTALL);
     	Matcher matcher = pattern.matcher(content);
     	String string = matcher.replaceAll("");
     	return string;
@@ -24,5 +24,10 @@ public class Html{
 
     	return path;
     }
+    
+    public static void main(String[] args) {
+		String html = "<p>&nbsp你好</p>";
+		System.out.println(Html.removeTag(html));
+	}
 
 }
