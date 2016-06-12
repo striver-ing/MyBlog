@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface CategoryService {
 	/*
-	 * @param articleId ÎÄÕÂid£¨²©¿Í£¯ÈÕ¼Ç£¯Ëæ±Ê£©
-	 * @param articleTypes ÎÄÕÂ·ÖÀà
-	 * @param articleAttribute ÎÄÕÂÊôĞÔ£¨²©¿Í£¯ÈÕ¼Ç£¯Ëæ±Ê£©¸ù¾İÕâ¸ö ´æ¶ÔÓ¦µÄ±í
+	 * @param articleId æ–‡ç« idï¼ˆåšå®¢ï¼æ—¥è®°ï¼éšç¬”ï¼‰
+	 * @param articleTypes æ–‡ç« åˆ†ç±»
+	 * @param articleAttribute æ–‡ç« å±æ€§ï¼ˆåšå®¢ï¼æ—¥è®°ï¼éšç¬”ï¼‰æ ¹æ®è¿™ä¸ª å­˜å¯¹åº”çš„è¡¨
 	 */
 	void addArticleTypes(int articleId, String articleTypes, String articleAttribute);
 	List findCategorys(String articleAttribute);

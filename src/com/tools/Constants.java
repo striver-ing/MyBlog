@@ -3,20 +3,20 @@ package com.tools;
 
 public class Constants {
 	public final static String LOGIN_SUCCESS = "";
-	public final static String LOGIN_NO_USER = "Ã»ÓĞ´ËÓÃ»§";
-	public final static String LOGIN_ERROR_PWD = "ÃÜÂë´íÎó";
+	public final static String LOGIN_NO_USER = "æ²¡æœ‰æ­¤ç”¨æˆ·";
+	public final static String LOGIN_ERROR_PWD = "å¯†ç é”™è¯¯";
 	
-	public final static String USER = "user";   //´æÔÚsession ÖĞµÄÓÃ»§
-	public final static String BLOGS = "blogs"; //È«²¿²©¿Í  ÓÃÓÚ·ÖÒ³ÏÔÊ¾
-	public final static String DIARYS = "diarys"; //È«²¿ÈÕ¼Ç  ÓÃÓÚ·ÖÒ³ÏÔÊ¾
-	public final static String ESSAYS = "essays"; //È«²¿ËéÑÔËéÓï  ÓÃÓÚ·ÖÒ³ÏÔÊ¾
+	public final static String USER = "user";   //å­˜åœ¨session ä¸­çš„ç”¨æˆ·
+	public final static String BLOGS = "blogs"; //å…¨éƒ¨åšå®¢  ç”¨äºåˆ†é¡µæ˜¾ç¤º
+	public final static String DIARYS = "diarys"; //å…¨éƒ¨æ—¥è®°  ç”¨äºåˆ†é¡µæ˜¾ç¤º
+	public final static String ESSAYS = "essays"; //å…¨éƒ¨ç¢è¨€ç¢è¯­  ç”¨äºåˆ†é¡µæ˜¾ç¤º
 	
-	//ÓÃÓÚÅĞ¶ÏÎÄÕÂÀàĞÍ
+	//ç”¨äºåˆ¤æ–­æ–‡ç« ç±»å‹
 	public final static String BLOG = "blog";
 	public final static String DIARY = "diary";
 	public final static String ESSAY= "essay";
 	
-	//ÎÄÕÂ·ÖÀà
+	//æ–‡ç« åˆ†ç±»
 	public final static String BLOG_CATEGORYS = "blogCategorys";
 	public final static String DIARY_CATEGORYS = "diaryCategorys";
 	public final static String ESSAY_CATEGORYS= "essayCategorys";

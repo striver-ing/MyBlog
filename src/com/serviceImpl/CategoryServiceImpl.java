@@ -18,9 +18,9 @@ public class CategoryServiceImpl extends HibernateDaoSupport implements
 		// TODO Auto-generated method stub
 		if(articleTypes == null || articleTypes.equals("")) return;
 		
-		String[] types = articleTypes.split(",|£¬");
+		String[] types = articleTypes.split(",|ï¼Œ");
 		for (int i = 0; i < types.length; i++) {
-			//È¥ÖØ ÄÃµ±Ç°strÓëºóÃæµÄ±È½Ï Èç¹ûºóÃæÓĞ ÔòºöÂÔµ±Ç°µÄ
+			//å»é‡ æ‹¿å½“å‰strä¸åé¢çš„æ¯”è¾ƒ å¦‚æœåé¢æœ‰ åˆ™å¿½ç•¥å½“å‰çš„
 			int j;
 			for (j = i + 1; j < types.length; j++) {
 				if (types[i].equals(types[j])) {
@@ -33,7 +33,7 @@ public class CategoryServiceImpl extends HibernateDaoSupport implements
 			
 			String type = types[i];
 			System.out.print(type + " ; ");
-			//½«·ÖÀà´æÈëÊı¾İ¿â
+			//å°†åˆ†ç±»å­˜å…¥æ•°æ®åº“
 			if (articleAttribute .equals(Constants.BLOG)) {
 				BlogCategory category = new BlogCategory(articleId, type.trim());
 				this.getHibernateTemplate().save(category);
@@ -52,7 +52,7 @@ public class CategoryServiceImpl extends HibernateDaoSupport implements
 	public void deleteCategoryByArticleType(String articleType, String articleAttribute) {
 		// TODO Auto-generated method stub
 		if (articleAttribute .equals(Constants.BLOG)) {
-			// Êı¾İ¿â·ÖÀà±íÖĞ¿ÉÄÜ´æÓĞÖØ¸´·ÖÀà ÏÈ²é³öÕâĞ©Ò»ÑùµÄ·ÖÀà È»ºóÉ¾³ı
+			// æ•°æ®åº“åˆ†ç±»è¡¨ä¸­å¯èƒ½å­˜æœ‰é‡å¤åˆ†ç±» å…ˆæŸ¥å‡ºè¿™äº›ä¸€æ ·çš„åˆ†ç±» ç„¶ååˆ é™¤
 			String hql = "from BlogCategory where blogType = '" + articleType+"'";
 			List<BlogCategory> blogCategorys = this.getHibernateTemplate().find(hql);
 			for (BlogCategory blogCategory : blogCategorys) {
@@ -87,15 +87,15 @@ public class CategoryServiceImpl extends HibernateDaoSupport implements
 			BlogCategory blogCategory = (BlogCategory)category;
 			int categoryId = blogCategory.getCategoryId();
 			String blogType = blogCategory.getBlogType();
-			// Êı¾İ¿â·ÖÀà±íÖĞ¿ÉÄÜ´æÓĞÖØ¸´·ÖÀà ÏÈ²é³öÕâĞ©Ò»ÑùµÄ·ÖÀà È»ºó¸üĞÂ
-			//1. ÕÒ³öÔ­À´µÄ·ÖÀàÃû
+			// æ•°æ®åº“åˆ†ç±»è¡¨ä¸­å¯èƒ½å­˜æœ‰é‡å¤åˆ†ç±» å…ˆæŸ¥å‡ºè¿™äº›ä¸€æ ·çš„åˆ†ç±» ç„¶åæ›´æ–°
+			//1. æ‰¾å‡ºåŸæ¥çš„åˆ†ç±»å
 			String hql = "from BlogCategory where categoryId = '" + categoryId+"'";
 			BlogCategory blogCategoryOlder =(BlogCategory) this.getHibernateTemplate().get(BlogCategory.class, categoryId);
 			String blogTypeOlder = blogCategoryOlder.getBlogType();
-			//2. ¸ù¾İÔ­À´µÄ·ÖÀàÃûÕÒ³ö¾ßÓĞÍ¬ÑùÃû×ÖµÄ·ÖÀà
+			//2. æ ¹æ®åŸæ¥çš„åˆ†ç±»åæ‰¾å‡ºå…·æœ‰åŒæ ·åå­—çš„åˆ†ç±»
 			hql = "from BlogCategory where blogType = '" + blogTypeOlder+"'";
 			List<BlogCategory> blogCategorys = this.getHibernateTemplate().find(hql);
-			//3. ¸üĞÂ
+			//3. æ›´æ–°
 			for (BlogCategory blogCategory2 : blogCategorys) {
 				blogCategory2.setBlogType(blogType);
 				this.getHibernateTemplate().update(blogCategory2);

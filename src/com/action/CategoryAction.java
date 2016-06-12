@@ -23,9 +23,9 @@ public class CategoryAction extends ActionSupport {
 	
 	int articleId;
 	int categoryId;
-	String articleTypes; //¶à¸ö·ÖÀà ¶ººÅ¸ô¿ª Èçjava£¬c++ ÓÃÓÚÌí¼Ó
-	String articleAttribute; //·ÖÀàÊôĞÔ ²©¿Í ÈÕ¼Ç »òÕß ËéÑÔËéÓï
-	String articleType; //µ¥¸ö·ÖÀà  ÓÃÓÚÉ¾³ıºÍ±à¼­
+	String articleTypes; //å¤šä¸ªåˆ†ç±» é€—å·éš”å¼€ å¦‚javaï¼Œc++ ç”¨äºæ·»åŠ 
+	String articleAttribute; //åˆ†ç±»å±æ€§ åšå®¢ æ—¥è®° æˆ–è€… ç¢è¨€ç¢è¯­
+	String articleType; //å•ä¸ªåˆ†ç±»  ç”¨äºåˆ é™¤å’Œç¼–è¾‘
 	
 	
 	List<BlogCategory> blogCategorys;
@@ -139,7 +139,7 @@ public class CategoryAction extends ActionSupport {
 		return articleAttribute;
 	}
 	
-	//²éÕÒËùÓĞ·ÖÀà ²¢½«Æä´æµ½sessionÖĞ
+	//æŸ¥æ‰¾æ‰€æœ‰åˆ†ç±» å¹¶å°†å…¶å­˜åˆ°sessionä¸­
 	public String findAllCategorys(){
 		this.setBlogCategorys(categoryService.findCategorys(Constants.BLOG));
 		this.setDiaryCategorys(categoryService.findCategorys(Constants.DIARY));
@@ -180,15 +180,15 @@ public class CategoryAction extends ActionSupport {
 		Map session = (Map)ActionContext.getContext().get("session");
 		if (articleAttribute .equals(Constants.BLOG)) {
 			this.setBlogs(categoryService.findArticlesByArticleType(categoryId, articleAttribute));
-			//°Ñ²©¿Í´æµ½sessionÖĞ ÒÔ±ã·ÖÒ³
+			//æŠŠåšå®¢å­˜åˆ°sessionä¸­ ä»¥ä¾¿åˆ†é¡µ
 			session.put(Constants.BLOGS, blogs);
 		}else if(articleAttribute .equals(Constants.DIARY)){
 			this.setDiarys(categoryService.findArticlesByArticleType(categoryId, articleAttribute));
-			//°ÑÈÕ¼Ç´æµ½sessionÖĞ ÒÔ±ã·ÖÒ³ Ã»Ğ´·ÖÒ³ ÏÈÔÚÒ»Ò³È«²¿Õ¹Ê¾
+			//æŠŠæ—¥è®°å­˜åˆ°sessionä¸­ ä»¥ä¾¿åˆ†é¡µ æ²¡å†™åˆ†é¡µ å…ˆåœ¨ä¸€é¡µå…¨éƒ¨å±•ç¤º
 			//session.put(Constants.DIARYS, blogs);
 		}else if(articleAttribute .equals(Constants.ESSAY)){
 			this.setEssays(categoryService.findArticlesByArticleType(categoryId, articleAttribute));
-			//°ÑÈÕ¼Ç´æµ½sessionÖĞ ÒÔ±ã·ÖÒ³ Ã»Ğ´·ÖÒ³ ÏÈÔÚÒ»Ò³È«²¿Õ¹Ê¾
+			//æŠŠæ—¥è®°å­˜åˆ°sessionä¸­ ä»¥ä¾¿åˆ†é¡µ æ²¡å†™åˆ†é¡µ å…ˆåœ¨ä¸€é¡µå…¨éƒ¨å±•ç¤º
 			//session.put(Constants.ESSAYS, blogs);
 		}
 		return articleAttribute;

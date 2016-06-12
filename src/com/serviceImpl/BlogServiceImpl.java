@@ -24,7 +24,7 @@ public class BlogServiceImpl extends HibernateDaoSupport implements
 		dealOrtherAttribute(blog);
 		blog.setReadedCount(0);
 		this.getHibernateTemplate().save(blog);
-		//È¡blog ÒÔ±ãµÃµ½id
+		//å–blog ä»¥ä¾¿å¾—åˆ°id
 		String hql = "from Blog order by blogId DESC limit 1";
 		return (Blog) this.getHibernateTemplate().find(hql).get(0);
 	}
@@ -74,34 +74,34 @@ public class BlogServiceImpl extends HibernateDaoSupport implements
 	
 	
 	public void dealOrtherAttribute(Blog blog) {
-		// ÎÄÕÂÄÚÈİ
+		// æ–‡ç« å†…å®¹
 		String content = blog.getContent();
 
-		// ÕªÒª´¦Àí
+		// æ‘˜è¦å¤„ç†
 		String abstract_ = blog.getAbstract_();
 		if (abstract_ == "" || abstract_.trim().length() == 0) {
-			// È¡ÎÄÕÂÇ°200×Ö×÷ÎªÕªÒª »òÕßÓöµ½Í¼Æ¬½áÊø ÕªÒªºó¼Ó...
-			abstract_ = Html.removeTag(content); // È¥µôhtml±êÇ©
+			// å–æ–‡ç« å‰200å­—ä½œä¸ºæ‘˜è¦ æˆ–è€…é‡åˆ°å›¾ç‰‡ç»“æŸ æ‘˜è¦ååŠ ...
+			abstract_ = Html.removeTag(content); // å»æ‰htmlæ ‡ç­¾
 			int endPos = abstract_.length() > 100 ? 100 : abstract_.length();
 			abstract_ = abstract_.substring(0, endPos) + "...";
 			blog.setAbstract_(abstract_);
 		}
 		
-		//ÌùÍ¼ È¡ÎÄÕÂµÚÒ»¸öÍ¼Æ¬ Èç¹ûÃ»ÓĞ È¡Ä¬ÈÏÍ¼Æ¬
+		//è´´å›¾ å–æ–‡ç« ç¬¬ä¸€ä¸ªå›¾ç‰‡ å¦‚æœæ²¡æœ‰ å–é»˜è®¤å›¾ç‰‡
 		String imgPath = Html.getImagePath(content);
 		if (imgPath == null) {
 			imgPath = "images/blog_default.jpg";
 		}
 		blog.setImgPath(imgPath);
 		
-		//Ê±¼ä
+		//æ—¶é—´
 		blog.setDate(Timer.getDate());
 		
 		//userId
-		//µÚÒ»ÖÖÈ¡sessionÖĞuser µÄ·½·¨
+		//ç¬¬ä¸€ç§å–sessionä¸­user çš„æ–¹æ³•
 		Map session = (Map)ActionContext.getContext().get("session");
 		User user = (User)session.get(Constants.USER);
-		//µÚ¶şÖÖÈ¡sessionÖĞuser µÄ·½·¨
+		//ç¬¬äºŒç§å–sessionä¸­user çš„æ–¹æ³•
 		//HttpSession session=ServletActionContext.getRequest().getSession();
 		//User user = (User)session.getAttribute(Constants.USER);
 		if (user != null) {

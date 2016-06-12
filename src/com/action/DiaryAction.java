@@ -12,7 +12,7 @@ public class DiaryAction extends ActionSupport {
 	int diaryId;
 	DiaryService diaryService;
 	
-	int articleId; //用于分类
+	int articleId; //鐢ㄤ簬鍒嗙被
 	
 	
 	public int getArticleId() {
@@ -48,7 +48,7 @@ public class DiaryAction extends ActionSupport {
 	
 	public String addDiary(){
 		Diary diary_ = diaryService.addDiary(diary);
-		this.setArticleId(diary_.getDiaryId()); //以便分类action中取articleId
+		this.setArticleId(diary_.getDiaryId()); //浠ヤ究鍒嗙被action涓彇articleId
 		
 		return SUCCESS;
 	}

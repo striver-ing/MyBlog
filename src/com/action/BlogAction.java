@@ -18,9 +18,9 @@ public class BlogAction extends ActionSupport{
 	int userId;
 	String keyword;
 	
-	int articleId;  //ÎÄÕÂid
-	String articleTypes; //ÒÔ¶ººÅ·Ö¸î¶à¸ötype ÎÄÕÂ·ÖÀà
-	String articleAttribute; //ÎÄÕÂÊôĞÔ  ÊôÓÚ²©¿Í
+	int articleId;  //æ–‡ç« id
+	String articleTypes; //ä»¥é€—å·åˆ†å‰²å¤šä¸ªtype æ–‡ç« åˆ†ç±»
+	String articleAttribute; //æ–‡ç« å±æ€§  å±äºåšå®¢
 
 	
 	
@@ -91,24 +91,24 @@ public class BlogAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
-	//°´ÈÕÆÚÓÉ½üµ½Ô¶ÅÅĞò
+	//æŒ‰æ—¥æœŸç”±è¿‘åˆ°è¿œæ’åº
 	public String findAllBlog(){
 		this.setBlogs(blogService.findBlogs("order by date DESC"));
-		//°Ñ²©¿Í´æµ½sessionÖĞ ÒÔ±ã·ÖÒ³
+		//æŠŠåšå®¢å­˜åˆ°sessionä¸­ ä»¥ä¾¿åˆ†é¡µ
 		Map session = (Map)ActionContext.getContext().get("session");
 		session.put(Constants.BLOGS, blogs);
 		this.setArticleAttribute(Constants.BLOG);
 		return SUCCESS;
 	}
 	
-	//²éÕÒÈÈÃÅ²©¿Í
+	//æŸ¥æ‰¾çƒ­é—¨åšå®¢
 	public String findHotBlog(){
-		this.setBlogs(blogService.findBlogs("order by readedCount DESC limit 5"));//limit 50  È¡50Ìõ¼ÇÂ¼
+		this.setBlogs(blogService.findBlogs("order by readedCount DESC limit 5"));//limit 50  å–50æ¡è®°å½•
 		this.setArticleAttribute(Constants.BLOG);
 		return SUCCESS;
 	}
 	
-	//Ä£ºı²éÑ¯²©¿Í
+	//æ¨¡ç³ŠæŸ¥è¯¢åšå®¢
 	public String findBlogByKeyword(){
 		this.setBlogs(blogService.findBlogs("where title like'%"+keyword+"%'"));
 		Map session = (Map)ActionContext.getContext().get("session");

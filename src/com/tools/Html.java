@@ -3,22 +3,22 @@ package com.tools;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Html{    
+public class Html{
     public static String removeTag(String content){
     	Pattern pattern = Pattern.compile("<.+?>", Pattern.DOTALL);
     	Matcher matcher = pattern.matcher(content);
     	String string = matcher.replaceAll("");
     	return string;
     }
-    
+
     public static String getImagePath(String content){
     	String path = null;
-    	
-    	Pattern pattern = Pattern.compile("<img[^>]*src*=*\"([^\"]*)\"[^>]*>");//()ÀïÎªÒª²éÕÒÏî
+
+    	Pattern pattern = Pattern.compile("<img[^>]*src*=*\"([^\"]*)\"[^>]*>");//()é‡Œä¸ºè¦æŸ¥æ‰¾é¡¹
     	Matcher matcher = pattern.matcher(content);
     	if (matcher.find()) {
-    		System.out.println(matcher.group(0)); //ÕıÔò´ú±íµÄÆ¥ÅäÏî Èç<img src="">
-    		System.out.println(matcher.group(1)); // ()ÀïµÄÆ¥ÅäÏî
+    		System.out.println(matcher.group(0)); //æ­£åˆ™ä»£è¡¨çš„åŒ¹é…é¡¹ å¦‚<img src="">
+    		System.out.println(matcher.group(1)); // ()é‡Œçš„åŒ¹é…é¡¹
 			path = matcher.group(1);
 		}
 

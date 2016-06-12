@@ -28,17 +28,17 @@ public class DiaryServiceImpl extends HibernateDaoSupport implements
 		diary.setDate(Timer.getDate());
 		diary.setWeek(Timer.getWeek());
 		
-		// ÕªÒª´¦Àí
+		// æ‘˜è¦å¤„ç†
 		String content = diary.getContent();
 		String abstract_ = diary.getAbstract_();
-		// È¡ÎÄÕÂÇ°200×Ö×÷ÎªÕªÒª »òÕßÓöµ½Í¼Æ¬½áÊø ÕªÒªºó¼Ó...
-		abstract_ = Html.removeTag(content); // È¥µôhtml±êÇ©
+		// å–æ–‡ç« å‰200å­—ä½œä¸ºæ‘˜è¦ æˆ–è€…é‡åˆ°å›¾ç‰‡ç»“æŸ æ‘˜è¦ååŠ ...
+		abstract_ = Html.removeTag(content); // å»æ‰htmlæ ‡ç­¾
 		int endPos = abstract_.length() > 100 ? 100 : abstract_.length();
 		abstract_ = abstract_.substring(0, endPos) + "...";
 		diary.setAbstract_(abstract_);
 
 		// userId
-		// µÚÒ»ÖÖÈ¡sessionÖĞuser µÄ·½·¨
+		// ç¬¬ä¸€ç§å–sessionä¸­user çš„æ–¹æ³•
 		Map session = (Map) ActionContext.getContext().get("session");
 		User user = (User) session.get(Constants.USER);
 		if (user != null) {
@@ -47,7 +47,7 @@ public class DiaryServiceImpl extends HibernateDaoSupport implements
 
 		this.getHibernateTemplate().save(diary);
 		
-		//È¡diary ÒÔ±ãµÃµ½id
+		//å–diary ä»¥ä¾¿å¾—åˆ°id
 		String hql = "from Diary order by diaryId DESC limit 1";
 		return (Diary) this.getHibernateTemplate().find(hql).get(0);
 	}

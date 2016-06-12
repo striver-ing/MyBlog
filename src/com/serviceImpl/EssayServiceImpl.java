@@ -21,7 +21,7 @@ public class EssayServiceImpl extends HibernateDaoSupport implements
 		// TODO Auto-generated method stub
 		essay.setDate(Timer.getDate());
 		// userId
-		// µÚÒ»ÖÖÈ¡sessionÖĞuser µÄ·½·¨
+		// ç¬¬ä¸€ç§å–sessionä¸­user çš„æ–¹æ³•
 		Map session = (Map) ActionContext.getContext().get("session");
 		User user = (User) session.get(Constants.USER);
 		if (user != null) {

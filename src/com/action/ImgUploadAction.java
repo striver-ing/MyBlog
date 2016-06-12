@@ -13,12 +13,12 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ImgUploadAction extends ActionSupport {  
 	private static final long serialVersionUID = 1L;
 	private String err = "";  
-    private String msg;              //·µ»ØĞÅÏ¢  
-    private File fileData;           //ÉÏ´«ÎÄ¼ş  
-    private String fileDataFileName; //ÎÄ¼şÃû  
+    private String msg;              //è¿”å›ä¿¡æ¯  
+    private File fileData;           //ä¸Šä¼ æ–‡ä»¶  
+    private String fileDataFileName; //æ–‡ä»¶å  
   
     public String imgUpload() {  
-        //»ñÈ¡response¡¢request¶ÔÏó  
+        //è·å–responseã€requestå¯¹è±¡  
         ActionContext ac = ActionContext.getContext();  
         HttpServletResponse response = (HttpServletResponse) ac.get(ServletActionContext.HTTP_RESPONSE);  
         HttpServletRequest request = (HttpServletRequest) ac.get(ServletActionContext.HTTP_REQUEST);  
@@ -32,10 +32,10 @@ public class ImgUploadAction extends ActionSupport {
             e1.printStackTrace();  
         }  
         
-        //µÃµ½Í¼Æ¬±£´æÂ·¾¶£¬Õâ¸öÂ·¾¶ÊÇ·şÎñÆ÷ÉÏÏîÄ¿Â·¾¶£¯upload
+        //å¾—åˆ°å›¾ç‰‡ä¿å­˜è·¯å¾„ï¼Œè¿™ä¸ªè·¯å¾„æ˜¯æœåŠ¡å™¨ä¸Šé¡¹ç›®è·¯å¾„ï¼upload
         String saveRealFilePath = ServletActionContext.getServletContext().getRealPath("/upload");  
         File fileDir = new File(saveRealFilePath);  
-        if (!fileDir.exists()) { //Èç¹û²»´æÔÚ Ôò´´½¨   
+        if (!fileDir.exists()) { //å¦‚æœä¸å­˜åœ¨ åˆ™åˆ›å»º   
             fileDir.mkdirs();  
         }  
         File savefile;  
@@ -43,13 +43,13 @@ public class ImgUploadAction extends ActionSupport {
         try {  
             FileUtils.copyFile(fileData, savefile);  
         } catch (IOException e) {  
-            err = "´íÎó"+e.getMessage();  
+            err = "é”™è¯¯"+e.getMessage();  
             e.printStackTrace();  
         }  
         String file_Name = request.getContextPath() + "/upload/" + fileDataFileName;  
         
         msg = "{\"success\":\"" + true + "\",\"file_path\":\"" + file_Name + "\"}";  
-        out.print(msg); //·µ»ØmsgĞÅÏ¢  
+        out.print(msg); //è¿”å›msgä¿¡æ¯  
         return null;  
     }  
   

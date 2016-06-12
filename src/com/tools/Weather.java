@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * http://i.tianqi.com/index.php?c=code&id=1 ½âÎöÕâ¸öÍøÒ³  »ñÈ¡µ±ÌìÌìÆøºÍµØµãĞÅÏ¢
+ * http://i.tianqi.com/index.php?c=code&id=1 è§£æè¿™ä¸ªç½‘é¡µ  è·å–å½“å¤©å¤©æ°”å’Œåœ°ç‚¹ä¿¡æ¯
  */
 public class Weather {
 	final static String URL = "http://i.tianqi.com/index.php?c=code&id=1";
@@ -18,8 +18,8 @@ public class Weather {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(html);
 		if (matcher.find()) {
-  		System.out.println(matcher.group(0)); //ÕıÔò´ú±íµÄÆ¥ÅäÏî Èç<img src="">
-//			System.out.println(matcher.group(1)); // ()ÀïµÄÆ¥ÅäÏî
+  		System.out.println(matcher.group(0)); //æ­£åˆ™ä»£è¡¨çš„åŒ¹é…é¡¹ å¦‚<img src="">
+//			System.out.println(matcher.group(1)); // ()é‡Œçš„åŒ¹é…é¡¹
 			message = matcher.group(1);
 		}
 
@@ -29,13 +29,13 @@ public class Weather {
 	private static String getHtmlResource(String pageUrl,String encoding){  
         StringBuffer sb = new StringBuffer();  
         try {  
-            //¹¹½¨Ò»URL¶ÔÏó  
+            //æ„å»ºä¸€URLå¯¹è±¡  
             URL url = new URL(pageUrl);  
-            //Ê¹ÓÃopenStreamµÃµ½Ò»ÊäÈëÁ÷²¢ÓÉ´Ë¹¹ÔìÒ»¸öBufferedReader¶ÔÏó  
+            //ä½¿ç”¨openStreamå¾—åˆ°ä¸€è¾“å…¥æµå¹¶ç”±æ­¤æ„é€ ä¸€ä¸ªBufferedReaderå¯¹è±¡  
             BufferedReader in = new BufferedReader(new InputStreamReader(url  
                     .openStream(), encoding));  
             String line;  
-            //¶ÁÈ¡www×ÊÔ´  
+            //è¯»å–wwwèµ„æº  
             while ((line = in.readLine()) != null) {  
                 sb.append(line);  
                 sb.append("\n");
@@ -62,7 +62,7 @@ public class Weather {
     	return findMessage(regex);
 		
 	}
-//	<span class="cc30 f1">28¡æ</span>¡«<span class="c390 f1">19¡æ</span><span class="wind" style="padding:0 2px;">ÄÏ·ç 5-6¼¶ </span>
+//	<span class="cc30 f1">28â„ƒ</span>ï½<span class="c390 f1">19â„ƒ</span><span class="wind" style="padding:0 2px;">å—é£ 5-6çº§ </span>
 	public static String getTemperature(){
        	String regexHeigh = "<span class=\"cc30 f1\">([^<]*)</span>";
        	String regexLow = "<span class=\"c390 f1\">([^<]*)</span>";
