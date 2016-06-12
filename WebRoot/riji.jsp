@@ -47,47 +47,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
-	<div style="width: 100%;height: 50px;background-color: white; filter:alpha(opacity=50);-moz-opacity:0.5;-khtml-opacity: 0.5;opacity: 0.5;position: relative;  ">
+	<div
+		style="width: 100%;height: 50px;background-color: white; filter:alpha(opacity=50);-moz-opacity:0.5;-khtml-opacity: 0.5;opacity: 0.5;position: relative;  ">
 		<div class="top-1">
-		<ul class="dingjicaidan1">
-		   <li> <a href="#"><img src="images/white.png" class="top-1-img">	 </a>    	    	                                                                                              
-                        <ul class="tanchucaidan1">
-                            <a href="" target="_blank"><li>
-                                                        编辑博客
-                            </li><a>
-                            
-                        </ul>
-            </li>
-        </ul>
-	    </div>
-	    
-	    <div class="top-2">
-	    <ul class="dingjicaidan2">
-		<li><a href="#"><img src="images/gengduo.png" class="top-2-img"></a>
-			<ul class="tanchucaidan2">
-                            <li>
-                                <form action="" method="get">
-                                	<input name="sousuo" type="text" class="sousuo1">
-                                	    <button class="enniu">搜索</button>
-                                </form>
-                            </li>
-                        </ul>
-            </li>
-        </ul>
-	    </div>
-	    
-	    <div class="top-3">
-	    	<ul class="dingjicaidan3">
-		<li><a href="#"><img src="images/white.png" class="top-3-img"></a>
-			<ul class="tanchucaidan3">
-                            <a href="html/index.jsp" target="_blank"><li>
-                                                         登录
-                            </li></a>
-                        </ul>
-            </li>
-        </ul>
-	    </div>
-	    
+			<ul class="dingjicaidan1">
+				<li><a href="#"><img src="images/white.png"
+						class="top-1-img"> </a>
+					<ul class="tanchucaidan1">
+						<li><a href="blog_edit.jsp?user=${ session.user}"
+							target="_blank">写博客</a>
+						</li>
+						<li><a href="diary/diary_edit.jsp?user=${ session.user}"
+							target="_blank">写日记</a>
+						</li>
+						<li><a href="essay/essay_edit.jsp?user=${ session.user}"
+							target="_blank">新碎言碎语</a>
+						</li>
+
+					</ul></li>
+			</ul>
+		</div>
+
+		<div class="top-2">
+			<ul class="dingjicaidan2">
+				<li><a href="#"><img src="images/gengduo.png"
+						class="top-2-img">
+				</a>
+					<ul class="tanchucaidan2">
+						<li>
+							<form action="findBlogByKeyword.action" method="post">
+								<input name="keyword" type="text" class="sousuo1"> <input
+									type="submit" value="查询">
+							</form></li>
+					</ul></li>
+			</ul>
+		</div>
+
+		<div class="top-3">
+			<ul class="dingjicaidan3">
+				<li><a href="#"><img src="images/white.png"
+						class="top-3-img">
+				</a>
+					<ul class="tanchucaidan3">
+						<li><a href="login/login.jsp" target="_blank">登录</a>
+						</li>
+
+					</ul></li>
+			</ul>
+		</div>
+
 	</div>
 	
       <!--header start-->

@@ -184,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</li>
 			<li><a href="essay/essay_list.jsp">碎言碎语</a>
 			</li>
-			<li><a href="diary/diary_list.jsp">个人日记</a>
+			<li><a href="findAllDiary.action">个人日记</a>
 			</li>
 			<li><a href="xc.jsp">相册展示</a>
 			</li>

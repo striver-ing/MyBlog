@@ -128,9 +128,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<li><a href="#"><img src="images/white.png"
 						class="top-1-img"> </a>
 					<ul class="tanchucaidan1">
-						<li><a href="" target="_blank">写博客</a>
+						<li><a href="blog_edit.jsp?user=${ session.user}"
+							target="_blank">写博客</a>
 						</li>
-						<li><a href="" target="_blank">写博客</a>
+						<li><a href="diary/diary_edit.jsp?user=${ session.user}"
+							target="_blank">写日记</a>
+						</li>
+						<li><a href="essay/essay_edit.jsp?user=${ session.user}"
+							target="_blank">新碎言碎语</a>
 						</li>
 
 					</ul></li>
@@ -144,9 +149,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</a>
 					<ul class="tanchucaidan2">
 						<li>
-							<form action="" method="get">
-								<input name="sousuo" type="text" class="sousuo1">
-								<button class="enniu">搜索</button>
+							<form action="findBlogByKeyword.action" method="post">
+								<input name="keyword" type="text" class="sousuo1"> <input
+									type="submit" value="查询">
 							</form></li>
 					</ul></li>
 			</ul>
@@ -158,8 +163,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						class="top-3-img">
 				</a>
 					<ul class="tanchucaidan3">
-						<a href="html/index.jsp" target="_blank"><li>登录</li>
-						</a>
+						<li><a href="login/login.jsp" target="_blank">登录</a>
+						</li>
+
 					</ul></li>
 			</ul>
 		</div>
@@ -179,9 +185,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</li>
 			<li><a href="findAllBlog">博客列表</a>
 			</li>
-			<li><a href="shuo.jsp">碎言碎语</a>
+			<li><a href="essay/essay_list.jsp">碎言碎语</a>
 			</li>
-			<li><a href="riji.jsp">个人日记</a>
+			<li><a href="diary/diary_list.jsp">个人日记</a>
 			</li>
 			<li><a href="xc.jsp">相册展示</a>
 			</li>
@@ -247,50 +253,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="lanmubox">
 				<div class="hd">
 					<ul>
-						<li>博客列表</li>
-						<li>碎言碎语</li>
-						<li class="hd_3">个人日记</li>
+						<li>博客分类</li>
+						<li>日记分类</li>
+						<li class="hd_3">碎言碎语</li>
 					</ul>
 				</div>
 				<div class="bd">
 					<ul>
-						<li><a href="#" title="网站项目实战开发（-）">网站项目实战开发（-）</a>
-						</li>
-						<li><a href="#" title="关于响应式布局">关于响应式布局</a>
-						</li>
-						<li><a href="#" title="如何创建个人博客网站">如何创建个人博客网站</a>
-						</li>
-						<li><a href="#" title="网站项目实战开发（二）">网站项目实战开发（二）</a>
-						</li>
-						<li><a href="#" title="为什么新站前期排名老是浮动？(转)">为什么新站前期排名老是浮动？(转)</a>
-						</li>
+						<s:iterator value="#session.blogCategorys" id="blogCategory">
+							<li>
+								<a href="findArticlesByArticleType.action?categoryId=<s:property value = "#blogCategory.categoryId"/>&articleAttribute=blog">
+									<s:property value="#blogCategory.blogType" />
+								</a>
+						   </li>
+						</s:iterator>
 					</ul>
 					<ul>
-						<li><a href="#" title="网站项目实战开发（-）">网站项目实战开发（-）</a>
-						</li>
-						<li><a href="#" title="关于响应式布局">关于响应式布局</a>
-						</li>
-						<li><a href="#" title="如何创建个人博客网站">如何创建个人博客网站</a>
-						</li>
-						<li><a href="#" title="网站项目实战开发（二）">网站项目实战开发（二）</a>
-						</li>
-						<li><a href="#" title="为什么新站前期排名老是浮动？(转)">为什么新站前期排名老是浮动？(转)</a>
-						</li>
+						<s:iterator value="#session.diaryCategorys" id="diaryCategory">
+							<li>
+								<a href="findArticlesByArticleType.action?categoryId=<s:property value = "#diaryCategory.categoryId"/>&articleAttribute=diary">
+									<s:property value="#diaryCategory.diaryType" />
+								</a>
+						   </li>
+						</s:iterator>
 					</ul>
 					<ul>
-						<li><a href="#" title="网站项目实战开发（-）">网站项目实战开发（-）</a>
-						</li>
-						<li><a href="#" title="关于响应式布局">关于响应式布局</a>
-						</li>
-						<li><a href="#" title="如何创建个人博客网站">如何创建个人博客网站</a>
-						</li>
-						<li><a href="#" title="网站项目实战开发（二）">网站项目实战开发（二）</a>
-						</li>
-						<li><a href="#" title="为什么新站前期排名老是浮动？(转)">为什么新站前期排名老是浮动？(转)</a>
-						</li>
+						<s:iterator value="#session.essayCategorys" id="essayCategory">
+							<li>
+								<a href="findArticlesByArticleType.action?categoryId=<s:property value = "#essayCategory.categoryId"/>&articleAttribute=diary">
+									<s:property value="#essayCategory.essayType" />
+								</a>
+						   </li>
+						</s:iterator>
 					</ul>
-
-
 				</div>
 			</div>
 			<!--end-->
