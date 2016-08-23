@@ -51,6 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="header">
 			<h3 class="text-muted">
 				日期：${diary.date} ${diary.week}
+				城市: ${diary.address}
 				&nbsp&nbsp&nbsp天气：${diary.weather}<img src = "${diary.weatherImagePath}">${diary.temperature}
 			</h3>
 		</div>
